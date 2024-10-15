@@ -29,6 +29,8 @@
 		FC727AEC2CBE7A64007FFA9D /* ApiLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AEA2CBE7A5E007FFA9D /* ApiLocation.swift */; };
 		FC727AEE2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AED2CBE7D79007FFA9D /* ApiTransformation.swift */; };
 		FC727AEF2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AED2CBE7D79007FFA9D /* ApiTransformation.swift */; };
+		FC727AF12CBE811E007FFA9D /* StoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AF02CBE8113007FFA9D /* StoreDataProvider.swift */; };
+		FC727AF22CBE811E007FFA9D /* StoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AF02CBE8113007FFA9D /* StoreDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,7 @@
 		FC727AE72CBE79B4007FFA9D /* ApiHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHero.swift; sourceTree = "<group>"; };
 		FC727AEA2CBE7A5E007FFA9D /* ApiLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLocation.swift; sourceTree = "<group>"; };
 		FC727AED2CBE7D79007FFA9D /* ApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTransformation.swift; sourceTree = "<group>"; };
+		FC727AF02CBE8113007FFA9D /* StoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -159,6 +162,7 @@
 		FC727AD02CBE7264007FFA9D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				FC727AF02CBE8113007FFA9D /* StoreDataProvider.swift */,
 				FC727AD42CBE76BA007FFA9D /* MOHero+CoreDataClass.swift */,
 				FC727AD62CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift */,
 				FC727AD82CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift */,
@@ -331,6 +335,7 @@
 				FC727AEB2CBE7A64007FFA9D /* ApiLocation.swift in Sources */,
 				FC727AEE2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
 				FC727AE02CBE76BA007FFA9D /* MOHero+CoreDataClass.swift in Sources */,
+				FC727AF12CBE811E007FFA9D /* StoreDataProvider.swift in Sources */,
 				FC727AE22CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */,
 				FC727AE92CBE79BB007FFA9D /* ApiHero.swift in Sources */,
 				FC727AE42CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift in Sources */,
@@ -345,6 +350,7 @@
 				FC727AEC2CBE7A64007FFA9D /* ApiLocation.swift in Sources */,
 				FC727ADE2CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */,
 				FC727ADF2CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift in Sources */,
+				FC727AF22CBE811E007FFA9D /* StoreDataProvider.swift in Sources */,
 				FC727AE82CBE79BB007FFA9D /* ApiHero.swift in Sources */,
 				FC727AEF2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
 			);
