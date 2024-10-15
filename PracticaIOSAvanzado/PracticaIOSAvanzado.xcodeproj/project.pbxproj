@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC65E0BC2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */; };
+		FC65E0BD2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */; };
 		FC727AC52CBE7250007FFA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABA2CBE7250007FFA9D /* Assets.xcassets */; };
 		FC727AC72CBE7250007FFA9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABD2CBE7250007FFA9D /* LaunchScreen.storyboard */; };
 		FC727AC82CBE7250007FFA9D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABF2CBE7250007FFA9D /* LoginViewController.xib */; };
@@ -51,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 		FC727A7D2CBE6F0C007FFA9D /* PracticaIOSAvanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaIOSAvanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC727A932CBE6F0E007FFA9D /* PracticaIOSAvanzadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOSAvanzadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC727A9D2CBE6F0E007FFA9D /* PracticaIOSAvanzadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOSAvanzadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC65E0BA2CBEC6D5006D2F52 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		FC727A742CBE6F0C007FFA9D = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +164,7 @@
 		FC727ACF2CBE725E007FFA9D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FC65E0BA2CBEC6D5006D2F52 /* Network */,
 				FC727AE62CBE79A5007FFA9D /* ApiModel */,
 				FC727AD02CBE7264007FFA9D /* CoreData */,
 			);
@@ -331,6 +343,7 @@
 				FC727ACC2CBE7250007FFA9D /* SceneDelegate.swift in Sources */,
 				FC727ACD2CBE7250007FFA9D /* SplashViewController.swift in Sources */,
 				FC727ACE2CBE7250007FFA9D /* ViewController.swift in Sources */,
+				FC65E0BD2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */,
 				FC727AD32CBE727A007FFA9D /* Model.xcdatamodeld in Sources */,
 				FC727AEB2CBE7A64007FFA9D /* ApiLocation.swift in Sources */,
 				FC727AEE2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
@@ -351,6 +364,7 @@
 				FC727ADE2CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */,
 				FC727ADF2CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift in Sources */,
 				FC727AF22CBE811E007FFA9D /* StoreDataProvider.swift in Sources */,
+				FC65E0BC2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */,
 				FC727AE82CBE79BB007FFA9D /* ApiHero.swift in Sources */,
 				FC727AEF2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
 			);
