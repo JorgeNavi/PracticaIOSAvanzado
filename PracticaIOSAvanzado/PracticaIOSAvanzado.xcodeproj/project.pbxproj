@@ -20,6 +20,7 @@
 		FC5FB57B2CC115E800E5DC5B /* HeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */; };
 		FC5FB57E2CC116BD00E5DC5B /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57D2CC116BB00E5DC5B /* Hero.swift */; };
 		FC5FB57F2CC116BD00E5DC5B /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57D2CC116BB00E5DC5B /* Hero.swift */; };
+		FC5FB5872CC1257E00E5DC5B /* PIAObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */; };
 		FC65E0BC2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */; };
 		FC65E0BD2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */; };
 		FC727AC52CBE7250007FFA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABA2CBE7250007FFA9D /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		FC5FB5772CC115C300E5DC5B /* HeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCase.swift; sourceTree = "<group>"; };
 		FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewModel.swift; sourceTree = "<group>"; };
 		FC5FB57D2CC116BB00E5DC5B /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAObservable.swift; sourceTree = "<group>"; };
 		FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiProvider.swift; sourceTree = "<group>"; };
 		FC727A7D2CBE6F0C007FFA9D /* PracticaIOSAvanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaIOSAvanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC727A932CBE6F0E007FFA9D /* PracticaIOSAvanzadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOSAvanzadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 		FC5FB5542CC0F40300E5DC5B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */,
 				FC5FB5712CC113F300E5DC5B /* Heroes */,
 				FC5FB5562CC0F41300E5DC5B /* Login */,
 				FC5FB5572CC0F41A00E5DC5B /* Splash */,
@@ -432,6 +435,7 @@
 				FC727AEE2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
 				FC5FB5782CC115C700E5DC5B /* HeroUseCase.swift in Sources */,
 				FC5FB5742CC1141000E5DC5B /* HeroesViewController.swift in Sources */,
+				FC5FB5872CC1257E00E5DC5B /* PIAObservable.swift in Sources */,
 				FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */,
 				FC727AE02CBE76BA007FFA9D /* MOHero+CoreDataClass.swift in Sources */,
 				FC5FB57B2CC115E800E5DC5B /* HeroesViewModel.swift in Sources */,

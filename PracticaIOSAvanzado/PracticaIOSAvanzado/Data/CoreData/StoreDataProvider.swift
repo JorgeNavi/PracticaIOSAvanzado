@@ -87,12 +87,12 @@ extension StoreDataProvider {
     }
     
     //añadimos transformación
-    func add(transformations: [MOTransformation]) {
+    func add(transformations: [ApiTransformation]) {
         for transformation in transformations {
             let newTransformation = MOTransformation(context: context) //instanciamos una nueva transformación que es del tipo de la entidad de la BBDD y le asignamos valor a sus atributos:
             newTransformation.id = transformation.id
             newTransformation.name = transformation.name
-            newTransformation.info = transformation.info
+            newTransformation.info = transformation.description
             newTransformation.photo = transformation.photo
             
             if let heroId = transformation.hero?.id { //creamos una constante heroId a la que introducimos el id del heroe que tiene relacion con la transformation. Si hay un heroe con id asignado a la transformación:
