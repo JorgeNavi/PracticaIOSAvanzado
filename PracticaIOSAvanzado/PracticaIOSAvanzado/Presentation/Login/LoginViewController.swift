@@ -18,6 +18,10 @@ class LoginViewController: UIViewController {
          */
     }
     
+    @IBAction func goToHeroes(_ sender: Any) {
+        let heroesViewController = HeroesViewController()
+        navigationController?.pushViewController(heroesViewController, animated: true)
+    }
 }
    
 

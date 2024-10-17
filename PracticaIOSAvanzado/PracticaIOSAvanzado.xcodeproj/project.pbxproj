@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC4331312CC16364005F4458 /* HeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4331302CC16364005F4458 /* HeroCell.xib */; };
+		FC4331322CC16364005F4458 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC43312F2CC16364005F4458 /* HeroCell.swift */; };
 		FC5FB5692CC1131F00E5DC5B /* PIAApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */; };
 		FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */; };
 		FC5FB56C2CC1135700E5DC5B /* PIAEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */; };
@@ -66,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC43312F2CC16364005F4458 /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
+		FC4331302CC16364005F4458 /* HeroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroCell.xib; sourceTree = "<group>"; };
 		FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiError.swift; sourceTree = "<group>"; };
 		FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAEndPoint.swift; sourceTree = "<group>"; };
 		FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIARequestBuilder.swift; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 				FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */,
 				FC5FB5722CC1141000E5DC5B /* HeroesViewController.swift */,
 				FC5FB5732CC1141000E5DC5B /* HeroesViewController.xib */,
+				FC43312F2CC16364005F4458 /* HeroCell.swift */,
+				FC4331302CC16364005F4458 /* HeroCell.xib */,
 			);
 			path = Heroes;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC727AC52CBE7250007FFA9D /* Assets.xcassets in Resources */,
+				FC4331312CC16364005F4458 /* HeroCell.xib in Resources */,
 				FC727AC72CBE7250007FFA9D /* LaunchScreen.storyboard in Resources */,
 				FC727AC82CBE7250007FFA9D /* LoginViewController.xib in Resources */,
 				FC5FB5752CC1141000E5DC5B /* HeroesViewController.xib in Resources */,
@@ -443,6 +450,7 @@
 				FC5FB57F2CC116BD00E5DC5B /* Hero.swift in Sources */,
 				FC5FB56F2CC1139200E5DC5B /* PIARequestBuilder.swift in Sources */,
 				FC727AE22CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */,
+				FC4331322CC16364005F4458 /* HeroCell.swift in Sources */,
 				FC727AE92CBE79BB007FFA9D /* ApiHero.swift in Sources */,
 				FC727AE42CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift in Sources */,
 			);

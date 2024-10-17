@@ -8,7 +8,7 @@
 import Foundation
 
 //el modelo de la app
-struct Hero {
+struct Hero: Hashable {
     let id: String
     let name: String
     let photo: String
