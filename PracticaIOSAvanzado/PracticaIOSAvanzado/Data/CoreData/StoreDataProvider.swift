@@ -10,9 +10,14 @@ import CoreData
 //creamos nuestro StoreDataProvider que recordemos que es quien nos permite realizar las acciones con la BBDD
 class StoreDataProvider {
     
+    static var shared: StoreDataProvider = .init()
+    
     private let persistentContainer: NSPersistentContainer//donde guardamos toda la información de nuestra aplicación.
     private var context: NSManagedObjectContext { //Lo usamos para realizar acciones con la información, como añadir o cambiar datos.
-        persistentContainer.viewContext //Utilizar viewContext asegura que todas las operaciones de datos que impactan directamente en la interfaz de usuario se realicen de manera segura y eficiente
+        let viewContext = persistentContainer.viewContext //Utilizar viewContext asegura que todas las operaciones de datos que impactan directamente en la interfaz de usuario se realicen de manera segura y eficiente
+        viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump //Aplicamos una politica de mergeado, es decir, que ocurre cuando hay datos superpuestos en la BBDD. En este caso mergeByPropertyObjectTrump lo que hace es actualizar el registro existente si entra otro con las mismas propiedades. Si no existe, lo que crea de nuevas.
+        return viewContext
+        
     }
     
     

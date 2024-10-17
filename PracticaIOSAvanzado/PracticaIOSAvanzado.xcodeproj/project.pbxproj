@@ -7,8 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC65E0BC2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */; };
-		FC65E0BD2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */; };
+		FC5FB5692CC1131F00E5DC5B /* PIAApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */; };
+		FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */; };
+		FC5FB56C2CC1135700E5DC5B /* PIAEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */; };
+		FC5FB56D2CC1135700E5DC5B /* PIAEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */; };
+		FC5FB56F2CC1139200E5DC5B /* PIARequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */; };
+		FC5FB5702CC1139200E5DC5B /* PIARequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */; };
+		FC5FB5742CC1141000E5DC5B /* HeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5722CC1141000E5DC5B /* HeroesViewController.swift */; };
+		FC5FB5752CC1141000E5DC5B /* HeroesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5FB5732CC1141000E5DC5B /* HeroesViewController.xib */; };
+		FC5FB5782CC115C700E5DC5B /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5772CC115C300E5DC5B /* HeroUseCase.swift */; };
+		FC5FB5792CC115C700E5DC5B /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5772CC115C300E5DC5B /* HeroUseCase.swift */; };
+		FC5FB57B2CC115E800E5DC5B /* HeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */; };
+		FC5FB57E2CC116BD00E5DC5B /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57D2CC116BB00E5DC5B /* Hero.swift */; };
+		FC5FB57F2CC116BD00E5DC5B /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57D2CC116BB00E5DC5B /* Hero.swift */; };
+		FC65E0BC2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */; };
+		FC65E0BD2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */; };
 		FC727AC52CBE7250007FFA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABA2CBE7250007FFA9D /* Assets.xcassets */; };
 		FC727AC72CBE7250007FFA9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABD2CBE7250007FFA9D /* LaunchScreen.storyboard */; };
 		FC727AC82CBE7250007FFA9D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABF2CBE7250007FFA9D /* LoginViewController.xib */; };
@@ -17,7 +30,6 @@
 		FC727ACB2CBE7250007FFA9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727ABE2CBE7250007FFA9D /* LoginViewController.swift */; };
 		FC727ACC2CBE7250007FFA9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AC02CBE7250007FFA9D /* SceneDelegate.swift */; };
 		FC727ACD2CBE7250007FFA9D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AC12CBE7250007FFA9D /* SplashViewController.swift */; };
-		FC727ACE2CBE7250007FFA9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AC32CBE7250007FFA9D /* ViewController.swift */; };
 		FC727AD32CBE727A007FFA9D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC727AD12CBE727A007FFA9D /* Model.xcdatamodeld */; };
 		FC727ADC2CBE76BA007FFA9D /* MOHero+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AD42CBE76BA007FFA9D /* MOHero+CoreDataClass.swift */; };
 		FC727ADE2CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC727AD62CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift */; };
@@ -53,7 +65,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
+		FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiError.swift; sourceTree = "<group>"; };
+		FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAEndPoint.swift; sourceTree = "<group>"; };
+		FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIARequestBuilder.swift; sourceTree = "<group>"; };
+		FC5FB5722CC1141000E5DC5B /* HeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewController.swift; sourceTree = "<group>"; };
+		FC5FB5732CC1141000E5DC5B /* HeroesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroesViewController.xib; sourceTree = "<group>"; };
+		FC5FB5772CC115C300E5DC5B /* HeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCase.swift; sourceTree = "<group>"; };
+		FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewModel.swift; sourceTree = "<group>"; };
+		FC5FB57D2CC116BB00E5DC5B /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiProvider.swift; sourceTree = "<group>"; };
 		FC727A7D2CBE6F0C007FFA9D /* PracticaIOSAvanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaIOSAvanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC727A932CBE6F0E007FFA9D /* PracticaIOSAvanzadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOSAvanzadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC727A9D2CBE6F0E007FFA9D /* PracticaIOSAvanzadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOSAvanzadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +86,6 @@
 		FC727AC02CBE7250007FFA9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FC727AC12CBE7250007FFA9D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		FC727AC22CBE7250007FFA9D /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
-		FC727AC32CBE7250007FFA9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC727AD22CBE727A007FFA9D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FC727AD42CBE76BA007FFA9D /* MOHero+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MOHero+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FC727AD62CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MOLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -115,10 +134,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC5FB5542CC0F40300E5DC5B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FC5FB5712CC113F300E5DC5B /* Heroes */,
+				FC5FB5562CC0F41300E5DC5B /* Login */,
+				FC5FB5572CC0F41A00E5DC5B /* Splash */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FC5FB5552CC0F40D00E5DC5B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FC5FB57C2CC116B400E5DC5B /* Model */,
+				FC5FB5762CC115AE00E5DC5B /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FC5FB5562CC0F41300E5DC5B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FC727ABE2CBE7250007FFA9D /* LoginViewController.swift */,
+				FC727ABF2CBE7250007FFA9D /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FC5FB5572CC0F41A00E5DC5B /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				FC727AC12CBE7250007FFA9D /* SplashViewController.swift */,
+				FC727AC22CBE7250007FFA9D /* SplashViewController.xib */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		FC5FB5712CC113F300E5DC5B /* Heroes */ = {
+			isa = PBXGroup;
+			children = (
+				FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */,
+				FC5FB5722CC1141000E5DC5B /* HeroesViewController.swift */,
+				FC5FB5732CC1141000E5DC5B /* HeroesViewController.xib */,
+			);
+			path = Heroes;
+			sourceTree = "<group>";
+		};
+		FC5FB5762CC115AE00E5DC5B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				FC5FB5772CC115C300E5DC5B /* HeroUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		FC5FB57C2CC116B400E5DC5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC5FB57D2CC116BB00E5DC5B /* Hero.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FC65E0BA2CBEC6D5006D2F52 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FC65E0BB2CBEC6E3006D2F52 /* ApiProvider.swift */,
+				FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */,
+				FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */,
+				FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */,
+				FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -147,16 +232,13 @@
 			isa = PBXGroup;
 			children = (
 				FC727ACF2CBE725E007FFA9D /* Data */,
+				FC5FB5552CC0F40D00E5DC5B /* Domain */,
+				FC5FB5542CC0F40300E5DC5B /* Presentation */,
 				FC727AB92CBE7250007FFA9D /* AppDelegate.swift */,
 				FC727ABA2CBE7250007FFA9D /* Assets.xcassets */,
 				FC727ABB2CBE7250007FFA9D /* Info.plist */,
 				FC727ABD2CBE7250007FFA9D /* LaunchScreen.storyboard */,
-				FC727ABE2CBE7250007FFA9D /* LoginViewController.swift */,
-				FC727ABF2CBE7250007FFA9D /* LoginViewController.xib */,
 				FC727AC02CBE7250007FFA9D /* SceneDelegate.swift */,
-				FC727AC12CBE7250007FFA9D /* SplashViewController.swift */,
-				FC727AC22CBE7250007FFA9D /* SplashViewController.xib */,
-				FC727AC32CBE7250007FFA9D /* ViewController.swift */,
 			);
 			path = PracticaIOSAvanzado;
 			sourceTree = "<group>";
@@ -164,9 +246,9 @@
 		FC727ACF2CBE725E007FFA9D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				FC65E0BA2CBEC6D5006D2F52 /* Network */,
 				FC727AE62CBE79A5007FFA9D /* ApiModel */,
 				FC727AD02CBE7264007FFA9D /* CoreData */,
+				FC65E0BA2CBEC6D5006D2F52 /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -313,6 +395,7 @@
 				FC727AC52CBE7250007FFA9D /* Assets.xcassets in Resources */,
 				FC727AC72CBE7250007FFA9D /* LaunchScreen.storyboard in Resources */,
 				FC727AC82CBE7250007FFA9D /* LoginViewController.xib in Resources */,
+				FC5FB5752CC1141000E5DC5B /* HeroesViewController.xib in Resources */,
 				FC727AC92CBE7250007FFA9D /* SplashViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,13 +425,19 @@
 				FC727ACB2CBE7250007FFA9D /* LoginViewController.swift in Sources */,
 				FC727ACC2CBE7250007FFA9D /* SceneDelegate.swift in Sources */,
 				FC727ACD2CBE7250007FFA9D /* SplashViewController.swift in Sources */,
-				FC727ACE2CBE7250007FFA9D /* ViewController.swift in Sources */,
-				FC65E0BD2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */,
+				FC65E0BD2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */,
 				FC727AD32CBE727A007FFA9D /* Model.xcdatamodeld in Sources */,
+				FC5FB56D2CC1135700E5DC5B /* PIAEndPoint.swift in Sources */,
 				FC727AEB2CBE7A64007FFA9D /* ApiLocation.swift in Sources */,
 				FC727AEE2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
+				FC5FB5782CC115C700E5DC5B /* HeroUseCase.swift in Sources */,
+				FC5FB5742CC1141000E5DC5B /* HeroesViewController.swift in Sources */,
+				FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */,
 				FC727AE02CBE76BA007FFA9D /* MOHero+CoreDataClass.swift in Sources */,
+				FC5FB57B2CC115E800E5DC5B /* HeroesViewModel.swift in Sources */,
 				FC727AF12CBE811E007FFA9D /* StoreDataProvider.swift in Sources */,
+				FC5FB57F2CC116BD00E5DC5B /* Hero.swift in Sources */,
+				FC5FB56F2CC1139200E5DC5B /* PIARequestBuilder.swift in Sources */,
 				FC727AE22CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */,
 				FC727AE92CBE79BB007FFA9D /* ApiHero.swift in Sources */,
 				FC727AE42CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift in Sources */,
@@ -363,10 +452,15 @@
 				FC727AEC2CBE7A64007FFA9D /* ApiLocation.swift in Sources */,
 				FC727ADE2CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */,
 				FC727ADF2CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift in Sources */,
+				FC5FB5702CC1139200E5DC5B /* PIARequestBuilder.swift in Sources */,
+				FC5FB5792CC115C700E5DC5B /* HeroUseCase.swift in Sources */,
 				FC727AF22CBE811E007FFA9D /* StoreDataProvider.swift in Sources */,
-				FC65E0BC2CBEC6EA006D2F52 /* ApiProvider.swift in Sources */,
+				FC65E0BC2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */,
+				FC5FB56C2CC1135700E5DC5B /* PIAEndPoint.swift in Sources */,
 				FC727AE82CBE79BB007FFA9D /* ApiHero.swift in Sources */,
+				FC5FB57E2CC116BD00E5DC5B /* Hero.swift in Sources */,
 				FC727AEF2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
+				FC5FB5692CC1131F00E5DC5B /* PIAApiError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
