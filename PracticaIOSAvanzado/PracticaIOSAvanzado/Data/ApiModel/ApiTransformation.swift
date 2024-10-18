@@ -9,8 +9,16 @@ struct ApiTransformation: Codable {
     let id: String?
     let name: String?
     let photo: String?
-    let description: String?
+    let info: String?
     let hero: ApiHero?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case photo
+        case info = "description"
+        case hero
+    }
     
 }
 

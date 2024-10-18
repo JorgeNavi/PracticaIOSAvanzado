@@ -7,12 +7,20 @@
 
 import CoreData
 
+//vamos a implementar un enum con los casos según donde se realice la persistencia de datos para realizar en condiciones el testing de CoreData
+enum typePersistency {
+    case disk
+    case memory
+}
+
 //creamos nuestro StoreDataProvider que recordemos que es quien nos permite realizar las acciones con la BBDD
 class StoreDataProvider {
     
     static var shared: StoreDataProvider = .init()
     
     private let persistentContainer: NSPersistentContainer//donde guardamos toda la información de nuestra aplicación.
+    private let persistency: typePersistency //instanciamos nuestra persistencia del tipo de nuestro enum typePersistency y lo pasamos al init como parámetro
+    
     private var context: NSManagedObjectContext { //Lo usamos para realizar acciones con la información, como añadir o cambiar datos.
         let viewContext = persistentContainer.viewContext //Utilizar viewContext asegura que todas las operaciones de datos que impactan directamente en la interfaz de usuario se realicen de manera segura y eficiente
         viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump //Aplicamos una politica de mergeado, es decir, que ocurre cuando hay datos superpuestos en la BBDD. En este caso mergeByPropertyObjectTrump lo que hace es actualizar el registro existente si entra otro con las mismas propiedades. Si no existe, lo que crea de nuevas.
@@ -21,8 +29,18 @@ class StoreDataProvider {
     }
     
     
-    init() {
+    init(persistency: typePersistency = .disk) { //le damos por defecto el valor de .disk
+        self.persistency = persistency //instanciamos nuestra persistencia
         self.persistentContainer = NSPersistentContainer(name: "Model") //Aqui se le informa del modelo de datos que tiene que trabajar la BBDD.
+        if self.persistency == .memory { //Si el tipo de persistencia es .memory:
+            let persistenStore = persistentContainer.persistentStoreDescriptions.first
+            persistenStore?.url = URL(filePath: "/dev/null")
+            /*
+             •    if self.persistency == .memory: Este bloque condicional se ejecuta solo si la persistencia está configurada para ser en memoria.
+             •    let persistenStore = persistentContainer.persistentStoreDescriptions.first: Obtiene la primera descripción de la tienda de persistencia disponible para este contenedor, que es lo que se configurará en el siguiente paso.
+             •    persistenStore?.url = URL(filePath: "/dev/null"): Establece la URL del almacén persistente a /dev/null, un dispositivo especial que descarta toda la información escrita en él, simulando un almacenaje que no guarda los datos de forma permanente. Este esquema es útil para pruebas o situaciones donde no quieres que los datos persistan entre sesiones de la aplicación.
+             */
+        }
         self.persistentContainer.loadPersistentStores { _, error in //Aqui nos aseguramos de que la BBDD pueda cargar
             if let error { //si hay un error:
                 fatalError("Error loading persistent store: \(error.localizedDescription)") // Cierra la app tanto en desarrollo como en producción.
@@ -52,7 +70,7 @@ extension StoreDataProvider {
             newHero.id = hero.id
             newHero.name = hero.name
             newHero.info = hero.info
-            newHero.favorite = hero.favorite ?? false //el compilador avisa de que esto es opcional, asi que mediante el operador ?? establecemos que, si no tenemos valor de favorito, su valor por defecto sea false
+            newHero.favorite = hero.favorite ?? false
             newHero.photo = hero.photo
         }
         save() //Hay que guardar el contexto después del for
@@ -96,7 +114,7 @@ extension StoreDataProvider {
             let newTransformation = MOTransformation(context: context) //instanciamos una nueva transformación que es del tipo de la entidad de la BBDD y le asignamos valor a sus atributos:
             newTransformation.id = transformation.id
             newTransformation.name = transformation.name
-            newTransformation.info = transformation.description
+            newTransformation.info = transformation.info
             newTransformation.photo = transformation.photo
             
             if let heroId = transformation.hero?.id { //creamos una constante heroId a la que introducimos el id del heroe que tiene relacion con la transformation. Si hay un heroe con id asignado a la transformación:
