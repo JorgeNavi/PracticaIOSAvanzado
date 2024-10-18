@@ -22,6 +22,7 @@ extension MOHero {
 
     @NSManaged public var id: String?
     @NSManaged public var name: String?
+    @NSManaged public var info: String?
     @NSManaged public var photo: String?
     @NSManaged public var favorite: Bool
     @NSManaged public var locations: Set<MOLocation>? //Aqui están creadas las relaciones. establecemos el tipo genéricos de Set<MOLocation> para evitar el NSSet que viene por defecto que es objetiveC y lo sustituimos igual en los métodos que nos ha creado automáticamente

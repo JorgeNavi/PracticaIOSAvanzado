@@ -51,15 +51,19 @@ extension StoreDataProvider {
             let newHero = MOHero(context: context) //instanciamos un nuevo heroe que es del tipo de la entidad de la BBDD y le asignamos valor a sus atributos:
             newHero.id = hero.id
             newHero.name = hero.name
+            newHero.info = hero.info
             newHero.favorite = hero.favorite ?? false //el compilador avisa de que esto es opcional, asi que mediante el operador ?? establecemos que, si no tenemos valor de favorito, su valor por defecto sea false
             newHero.photo = hero.photo
         }
         save() //Hay que guardar el contexto después del for
     }
     
-    func fetchHeroes(filter: NSPredicate?) -> [MOHero] { //modificamos la función con el predicado como parámetro
+    //sortAscendig (hacer un sort) sirve para darle un orden predefinido a los datos, en este caso se le otorga un valor por defecto true para indicar que el orden que le demos se va a ejecutar por defecto
+    func fetchHeroes(filter: NSPredicate?, sortAscendig: Bool = true) -> [MOHero] { //modificamos la función con el predicado como parámetro
         let request = MOHero.fetchRequest()//se instancia una request que va a ser el metodo fetchRequest de MOHero proporcionado por el StoreProvider
         request.predicate = filter //le añadimos aquí el predicado
+        let sort = NSSortDescriptor(keyPath: \MOHero.name, ascending: sortAscendig) //Añadimos el orden que queremos dar a los datos: keyPath: \MOHero.name indica el dato se quiere ordenar por nombre y ascending: sortAscendig indica que se haga de forma ascendente
+        request.sortDescriptors = [sort] //Y aqui le pasamos nuestro sort a la request
         do {
             return try context.fetch(request) //Si hay registros los recuperas
         } catch {
@@ -69,7 +73,7 @@ extension StoreDataProvider {
     }
     
     //añadimos Location
-    func ad(locations: [ApiLocation]) {
+    func add(locations: [ApiLocation]) {
         for location in locations {
             let newLocation = MOLocation(context: context) //instanciamos una nueva localzación que es del tipo de la entidad de la BBDD y le asignamos valor a sus atributos:
             newLocation.id = location.id

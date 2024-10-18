@@ -8,9 +8,11 @@
 import Foundation
 
 //el modelo de la app
-struct Hero: Hashable {
+struct Hero: Hashable
+{
     let id: String
     let name: String
+    let info: String
     let photo: String
     let favorite: Bool
     
@@ -18,6 +20,7 @@ struct Hero: Hashable {
     init(moHero: MOHero) {
         self.id = moHero.id ?? ""
         self.name = moHero.name ?? ""
+        self.info = moHero.info ?? ""
         self.photo = moHero.photo ?? ""
         self.favorite = moHero.favorite
     }

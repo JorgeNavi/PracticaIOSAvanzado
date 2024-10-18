@@ -100,6 +100,7 @@
 		FC727AEA2CBE7A5E007FFA9D /* ApiLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLocation.swift; sourceTree = "<group>"; };
 		FC727AED2CBE7D79007FFA9D /* ApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTransformation.swift; sourceTree = "<group>"; };
 		FC727AF02CBE8113007FFA9D /* StoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataProvider.swift; sourceTree = "<group>"; };
+		FC7807CF2CC250A200A53245 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -808,9 +809,10 @@
 		FC727AD12CBE727A007FFA9D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FC7807CF2CC250A200A53245 /* Model 2.xcdatamodel */,
 				FC727AD22CBE727A007FFA9D /* Model.xcdatamodel */,
 			);
-			currentVersion = FC727AD22CBE727A007FFA9D /* Model.xcdatamodel */;
+			currentVersion = FC7807CF2CC250A200A53245 /* Model 2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
