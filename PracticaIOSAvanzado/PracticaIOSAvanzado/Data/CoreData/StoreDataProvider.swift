@@ -125,4 +125,17 @@ extension StoreDataProvider {
             }
         }
     }
+    
+    func clearDDBB() {
+        
+        //Solo es necesario establecer un borrado de heroes porque la relación que tiene con locations y transformatios es en cascada y si se eliminan los heroes se eliminan las otras dos entidades de la BBDD
+        let deleteHeroes = NSBatchDeleteRequest(fetchRequest: MOHero.fetchRequest())
+        
+        do {
+            try context.execute(deleteHeroes) //el NSBatchDeleteRequest se ejecuta directamente en el store por el metodo .execute
+            context.reset() //esto deja el context como si se acabara de crear
+        } catch {
+            debugPrint("Error cleaning DataBase: \(error.localizedDescription)")
+        }
+    }
 }

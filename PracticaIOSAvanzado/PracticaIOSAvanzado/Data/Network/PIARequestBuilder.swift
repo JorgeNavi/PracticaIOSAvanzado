@@ -15,7 +15,17 @@ class PIARequestBuilder {
     //creamos una variable para nuestra URLRequest
     private var request: URLRequest?
     //creamos una constante para el token
-    let token = "eyJhbGciOiJIUzI1NiIsImtpZCI6InByaXZhdGUiLCJ0eXAiOiJKV1QifQ.eyJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiaWRlbnRpZnkiOiIxRTgxNzY1OC02MkMyLTQ1RUItQTY1Mi03QTVCMTk0MUI5QUMiLCJlbWFpbCI6ImpvcmdlLmVzcGxpZWdvQGdtYWlsLmNvbSJ9.qSQDP5ha2aaLGDTPZcb1FfILwWpo7wCdHJ0iKmhvKN0"
+    var token: String? {
+        secureStorage.getToken()
+    }
+    
+    //para el keyChain, instanciamos una constante de tipo SecureDataStoreProtocol. El compilador nos pide que hagamos el init.
+    private let secureStorage: SecureDataStoreProtocol
+    
+    //con esto ya tenemos acceso a nuestro keyChain
+    init(secureStorage: SecureDataStoreProtocol = SecureDataStore.shared) {
+        self.secureStorage = secureStorage
+    }
     
     //creamos el método en el que vamos a asignar valor a los componentes de la url:
     private func url(endPoint: PIAEndPoint) -> URL? { //le pasamos el endPoint por parámetro para poder acceder a él
@@ -28,7 +38,7 @@ class PIARequestBuilder {
     
     //Este método nos va a establecer las cabeceras en función de lo que le pasemos (cabeceras como "Authorization")
     private func setHeaders(params: [String: String]?) { // params: [String: String] es el parámetro de las cabeceras
-        request?.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request?.setValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
         if let params {
             request?.httpBody = try? JSONSerialization.data(withJSONObject: params)
             }
@@ -37,7 +47,7 @@ class PIARequestBuilder {
 
     
     func buildRequest(endPoint: PIAEndPoint, params: [String: String]) -> URLRequest? { //le pasamos el endPoint por parámetro para poder acceder a él
-        guard let url = self.url(endPoint: endPoint)  else {
+        guard let url = self.url(endPoint: endPoint), let token = self.token else {
             return nil
         }
         request = URLRequest(url: url) //aquí se le asigna la URL completa de la request a request

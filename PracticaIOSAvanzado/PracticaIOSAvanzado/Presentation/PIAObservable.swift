@@ -4,6 +4,7 @@
 //
 //  Created by Jorge Navidad Espliego on 17/10/24.
 //
+import Foundation
 
 //esta clase nos va a servir para poder observar los cambios sobre un tipo de dato
 class PIAObservable<ObservedType> {
@@ -18,8 +19,11 @@ class PIAObservable<ObservedType> {
         }
         set {
             _value = newValue //pero si queremos asignarle valor, se lo asignamos a "_value"
-            valueChanged?(_value) //Y aqui decimos que el valor a cambiado a "_value" que llegados a esta línea es el valor de newValue. Esto se hace para que no se tenga acceso a la variable privada.
-        } //La clave es exclusivamente poder notificar cambios en el el valor usando valueChanged. La variable que nos importa es la privada y la pública es unicamente para recoger el cambio en el valor
+            DispatchQueue.main.async {
+                self.valueChanged?(self._value) //Y aqui decimos que el valor a cambiado a "_value" que llegados a esta línea es el valor de newValue. Esto se hace para que no se tenga acceso a la variable privada.
+                //La clave es exclusivamente poder notificar cambios en el el valor usando valueChanged. La variable que nos importa es la privada y la pública es unicamente para recoger el cambio en el valor
+            }
+        }
     }
     
     init(_ value: ObservedType) {
