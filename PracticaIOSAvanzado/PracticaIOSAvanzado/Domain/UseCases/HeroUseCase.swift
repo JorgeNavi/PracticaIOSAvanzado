@@ -30,10 +30,12 @@ class HeroUseCase: HeroUseCaseProtocol {
             apiProvider.loadHeroes(name: "") { [weak self] result in //se cargan los herores de la API
                 switch result {
                 case .success(let apiHeroes): //si se cargan satisfactoriamente:
-                    self?.storeDataProvider.add(heroes: apiHeroes) //se añaden a la BBDD los heroes de la API
-                    let DBHeroes = self?.storeDataProvider.fetchHeroes(filter: filter) ?? [] //En una constante localHeroes se recuperan los herores de la BBDD con el filtro
-                    let heroes = DBHeroes.map({Hero(moHero: $0)}) //en una constante heroes se mapean los heroes al tipo MOHero
-                    completion(.success(heroes)) //y se devuelven los heroes
+                    DispatchQueue.main.async {
+                        self?.storeDataProvider.add(heroes: apiHeroes) //se añaden a la BBDD los heroes de la API
+                        let dbHeroes = self?.storeDataProvider.fetchHeroes(filter: filter) ?? [] //En una constante localHeroes se recuperan los herores de la BBDD con el filtro
+                        let heroes = dbHeroes.map({Hero(moHero: $0)}) //en una constante heroes se mapean los heroes al tipo MOHero
+                        completion(.success(heroes)) //y se devuelven los heroes
+                    }
                 case .failure(let error):
                     completion(.failure(error))
                 }

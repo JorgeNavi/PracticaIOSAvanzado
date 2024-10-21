@@ -64,35 +64,31 @@ class PIAApiProvider: PIAApiProviderProtocol {
     
     //cargar heroes:
     func loadHeroes(name: String = "", completion: @escaping (Result<[ApiHero], PIAApiError>) -> Void) { //al hacer una petición a la API, vamos a usar un requestBuilder al que le pasamos el endPoint propio de la lista de heroes y nos devuelve el url completo con el método buildRequest como una request
-        if let request = requestBuilder.buildRequest(endPoint: .heroes, params: ["name" : name]) { //si hay request:
+        do {
+            let request = try requestBuilder.buildRequest(endPoint: .heroes, params: ["name" : name]) //si hay request:
             makeRequest(request: request, completion: completion)
-        } else { //si no hay request
-            completion(.failure(.invalidRequest)) //fallo personalizado de request
+        } catch {
+            completion(.failure(error)) //fallo personalizado de request
         }
-        
     }
     
     //cargar localizaciones:
     func loadLocations(id: String, completion: @escaping (Result<[ApiLocation], PIAApiError>) -> Void) { //al hacer una petición a la API, vamos a usar un requestBuilder al que le pasamos el endPoint propio de la lista de localizaciones y nos devuelve el url completo con el método buildRequest como una request
-        if let request = requestBuilder.buildRequest(endPoint: .locations, params: ["id" : id]) { //si hay request:
+        do {
+            let request = try requestBuilder.buildRequest(endPoint: .locations, params: ["id" : id]) //si hay request:
             makeRequest(request: request, completion: completion)
-        } else { //si no hay request
-            completion(.failure(.invalidRequest)) //fallo personalizado de request
+        } catch {
+            completion(.failure(error)) //fallo personalizado de request
         }
-        
     }
     
     //cargar transformaciones:
     func loadTransformations(id: String, completion: @escaping (Result<[ApiTransformation], PIAApiError>) -> Void) { //al hacer una petición a la API, vamos a usar un requestBuilder al que le pasamos el endPoint propio de la lista de heroes y nos devuelve el url completo con el método buildRequest como una request
-        if let request = requestBuilder.buildRequest(endPoint: .transformations, params: ["id" : id]) { //si hay request:
+        do {
+            let request = try requestBuilder.buildRequest(endPoint: .transformations, params: ["id" : id]) //si hay request:
             makeRequest(request: request, completion: completion)
-        } else { //si no hay request
-            completion(.failure(.invalidRequest)) //fallo personalizado de request
+        } catch {
+            completion(.failure(error)) //fallo personalizado de request
         }
-        
     }
-    
- 
-    
-    
 }

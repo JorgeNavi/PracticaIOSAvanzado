@@ -23,6 +23,10 @@ enum PIAApiError: Error, CustomStringConvertible { //CustomStringConvertible jun
             return "Data error"
         case .parsingDataError:
             return "Parsing data error"
+        case .sessionTokenMissing:
+            return "Session token missing"
+        case .URLMalFormed:
+            return "URL malformed"
         }
     }
     
@@ -31,5 +35,7 @@ enum PIAApiError: Error, CustomStringConvertible { //CustomStringConvertible jun
     case ApiError(statusCode: Int)
     case dataError
     case parsingDataError
+    case sessionTokenMissing
+    case URLMalFormed
 }
 

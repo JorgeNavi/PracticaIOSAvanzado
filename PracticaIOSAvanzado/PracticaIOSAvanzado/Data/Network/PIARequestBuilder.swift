@@ -28,17 +28,27 @@ class PIARequestBuilder {
     }
     
     //creamos el método en el que vamos a asignar valor a los componentes de la url:
-    private func url(endPoint: PIAEndPoint) -> URL? { //le pasamos el endPoint por parámetro para poder acceder a él
+    private func url(endPoint: PIAEndPoint) throws(PIAApiError) -> URL { //le pasamos el endPoint por parámetro para poder acceder a él
         var components = URLComponents()
         components.scheme = "https"
         components.host = self.host
         components.path = endPoint.path()
-        return components.url
+        if let url = components.url {
+            return url
+        } else {
+            throw PIAApiError.URLMalFormed
+        }
     }
     
     //Este método nos va a establecer las cabeceras en función de lo que le pasemos (cabeceras como "Authorization")
-    private func setHeaders(params: [String: String]?) { // params: [String: String] es el parámetro de las cabeceras
-        request?.setValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
+    //requiredAuthorization se va a usar para la implementación del Token
+    private func setHeaders(params: [String: String]?, requiredAuthorization: Bool = true) throws(PIAApiError) { // params: [String: String] es el parámetro de las cabeceras
+        if requiredAuthorization { //Si se requiere autorizacion:
+            guard let token = self.token else { //comprobamos que tenemos el token desempaquetandolo
+                throw PIAApiError.sessionTokenMissing //token perdido
+            }
+            request?.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         if let params {
             request?.httpBody = try? JSONSerialization.data(withJSONObject: params)
             }
@@ -46,15 +56,18 @@ class PIARequestBuilder {
         }
 
     
-    func buildRequest(endPoint: PIAEndPoint, params: [String: String]) -> URLRequest? { //le pasamos el endPoint por parámetro para poder acceder a él
-        guard let url = self.url(endPoint: endPoint), let token = self.token else {
-            return nil
+    func buildRequest(endPoint: PIAEndPoint, params: [String: String]) throws(PIAApiError) -> URLRequest { //le pasamos el endPoint por parámetro para poder acceder a él
+        do {
+            let url = try self.url(endPoint: endPoint)
+            request = URLRequest(url: url) //aquí se le asigna la URL completa de la request a request
+            request?.httpMethod = endPoint.httpMethod() //Aqui se establece el metodo http (en este caso solo tenemos POST porque en nuestra API recuperar herores es POST
+            try setHeaders(params: params) //Le pasamos el header
+            if let finalRequest = self.request {
+                return finalRequest //Y se devuelve request
+            }
+        } catch {
+            throw error
         }
-        request = URLRequest(url: url) //aquí se le asigna la URL completa de la request a request
-        request?.httpMethod = endPoint.httpMethod() //Aqui se establece el metodo http (en este caso solo tenemos POST porque en nuestra API recuperar herores es POST
-        setHeaders(params: params) //Le pasamos el header
-        
-        return request //Y se devuelve request
-        
+        throw PIAApiError.URLMalFormed
     }
 }

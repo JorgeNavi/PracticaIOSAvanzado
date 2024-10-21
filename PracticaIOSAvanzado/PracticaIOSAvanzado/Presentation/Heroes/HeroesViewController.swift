@@ -74,12 +74,9 @@ class HeroesViewController: UIViewController {
         //A UICollectionView.CellRegistration hay que pasarle una celda y el item que la trabaja/ocupa: <HeroCell, Hero>
         //se le pasa el identificador de la celda cellNib: UINib(nibName: HeroCell.identifier
         //y devuelve una celda, un indexPath y un item(hero):
-        let cellRegister = UICollectionView.CellRegistration<HeroCell, Hero>(cellNib: UINib(nibName: HeroCell.identifier, bundle: nil)) { cell, indexPath, hero in
-            if let hero = self.viewModel.heroAt(index: indexPath.row) { //si hay un heroe en el valor del indexPath(el índice del metodo del viewModel):
-                cell.lbHeroName.text = hero.name //La etiqueta de nombre de heroes de la celda recibe el valor el nombre de dicho héroe
+        let cellRegister = UICollectionView.CellRegistration<HeroCell, Hero>(cellNib: UINib(nibName:        HeroCell.identifier, bundle: nil)) { cell, indexPath, hero in
+            cell.lbHeroName.text = hero.name //La etiqueta de nombre de heroes de la celda recibe el valor el nombre de dicho héroe
             }
-        }
-        
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, IndexPath, hero in //Aquí se está inicializando el dataSource para un UICollectionView específico. El cellProvider es un bloque de código (closure) que especifica cómo se debería crear y configurar cada celda de la colección cuando es necesario.
             return collectionView.dequeueConfiguredReusableCell(using: cellRegister, for: IndexPath, item: hero) /*
