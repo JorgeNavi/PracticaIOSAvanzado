@@ -16,7 +16,7 @@ class PIARequestBuilder {
     private var request: URLRequest?
     //creamos una constante para el token
     var token: String? {
-        secureStorage.getToken()
+        secureStorage.getToken() //Cogemos el valor del token del keychain
     }
     
     //para el keyChain, instanciamos una constante de tipo SecureDataStoreProtocol. El compilador nos pide que hagamos el init.

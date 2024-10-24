@@ -48,8 +48,8 @@ class PIAApiProvider: PIAApiProviderProtocol {
             }
             if let data { //si se reciben datos:
                 do {
-                    let apiResponde = try JSONDecoder().decode(G.self, from: data) //se instancia una constante respuesta en la que se decodifica el JSON de la API de data
-                    completion(.success(apiResponde)) //asi que se lanza success
+                    let apiResponse = try JSONDecoder().decode(G.self, from: data) //se instancia una constante respuesta en la que se decodifica el JSON de la API de data
+                    completion(.success(apiResponse)) //asi que se lanza success
                 } catch {
                     completion(.failure(.parsingDataError)) //Se lanza error su falla el paso previo
                 }
@@ -64,7 +64,7 @@ class PIAApiProvider: PIAApiProviderProtocol {
     
     //cargar heroes:
     func loadHeroes(name: String = "", completion: @escaping (Result<[ApiHero], PIAApiError>) -> Void) { //al hacer una petición a la API, vamos a usar un requestBuilder al que le pasamos el endPoint propio de la lista de heroes y nos devuelve el url completo con el método buildRequest como una request
-        do {
+        do { //En este caso se buscan los heroes por nombre
             let request = try requestBuilder.buildRequest(endPoint: .heroes, params: ["name" : name]) //si hay request:
             makeRequest(request: request, completion: completion)
         } catch {

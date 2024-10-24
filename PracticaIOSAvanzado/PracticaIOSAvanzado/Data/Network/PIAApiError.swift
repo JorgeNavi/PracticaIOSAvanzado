@@ -27,7 +27,10 @@ enum PIAApiError: Error, CustomStringConvertible { //CustomStringConvertible jun
             return "Session token missing"
         case .URLMalFormed:
             return "URL malformed"
+        case .heroNotFound(idHero: let idHero):
+            return "Hero \(idHero) not found"
         }
+
     }
     
     case invalidRequest
@@ -37,5 +40,6 @@ enum PIAApiError: Error, CustomStringConvertible { //CustomStringConvertible jun
     case parsingDataError
     case sessionTokenMissing
     case URLMalFormed
+    case heroNotFound(idHero: String)
 }
 

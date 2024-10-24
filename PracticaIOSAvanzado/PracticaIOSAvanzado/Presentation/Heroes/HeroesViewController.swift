@@ -93,6 +93,17 @@ class HeroesViewController: UIViewController {
 
 extension HeroesViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout { //UICollectionViewDelegateFlowLayout tiene un método en el que le vamos a poder indicar el tamaño de las celdas.
     
+    //este es el método que hace que cuando un usuario hace tap en un elemento del collectionView (una celda de heroe), se navegue a la vista del detalle
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let hero = viewModel.heroAt(index: indexPath.row) else { //funcion que nos devolvia un heroe para la celda. Es decir, si hay celda_
+            return
+        }
+        let viewModel = DetailHeroViewModel(hero: hero)
+        let detailHeroVC = DetailHeroViewController(viewModel: viewModel)
+        self.show(detailHeroVC, sender: self) //self.show decide como moestrar la pantalla sin necesidad del navigationController
+        //navigationController?.pushViewController(detailHeroVC, animated: true)
+    }
+    
     //define el tamaño de cada celda en un UICollectionView. Es parte de la implementación del protocolo UICollectionViewDelegateFlowLayout, que se utiliza para personalizar el diseño de un UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { /*
         •    collectionView: El UICollectionView para el cual se está definiendo el tamaño de la celda.

@@ -18,8 +18,8 @@ class PIAObservable<ObservedType> {
             return _value //si solo queremos recuperar el valor de "value", recuperamos el valor de "_value"
         }
         set {
-            _value = newValue //pero si queremos asignarle valor, se lo asignamos a "_value"
             DispatchQueue.main.async {
+                self._value = newValue //pero si queremos asignarle valor, se lo asignamos a "_value"
                 self.valueChanged?(self._value) //Y aqui decimos que el valor a cambiado a "_value" que llegados a esta línea es el valor de newValue. Esto se hace para que no se tenga acceso a la variable privada.
                 //La clave es exclusivamente poder notificar cambios en el el valor usando valueChanged. La variable que nos importa es la privada y la pública es unicamente para recoger el cambio en el valor
             }

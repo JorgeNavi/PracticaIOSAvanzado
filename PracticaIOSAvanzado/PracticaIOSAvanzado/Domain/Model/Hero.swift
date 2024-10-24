@@ -17,7 +17,7 @@ struct Hero: Hashable
     let favorite: Bool
     
     
-    init(moHero: MOHero) {
+    init(moHero: MOHero) {  //se incicializan (o crean) pasandoles un modelo de la BBDD
         self.id = moHero.id ?? ""
         self.name = moHero.name ?? ""
         self.info = moHero.info ?? ""

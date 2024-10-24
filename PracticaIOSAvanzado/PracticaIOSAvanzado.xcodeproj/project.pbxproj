@@ -42,6 +42,9 @@
 		FCD8DC932CCA2FAD00FF71E2 /* DetailHeroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD8DC912CCA2FAD00FF71E2 /* DetailHeroViewController.xib */; };
 		FCD8DC952CCA301600FF71E2 /* DetailHeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC942CCA300B00FF71E2 /* DetailHeroViewModel.swift */; };
 		FCD8DC972CCA30CB00FF71E2 /* DetailHeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC962CCA30C000FF71E2 /* DetailHeroUseCase.swift */; };
+		FCD8DC9B2CCA33F700FF71E2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC9A2CCA33F100FF71E2 /* Location.swift */; };
+		FCD8DC9E2CCA562D00FF71E2 /* HeroAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC9D2CCA561D00FF71E2 /* HeroAnnotation.swift */; };
+		FCD8DCA02CCA5D8600FF71E2 /* HeroAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC9F2CCA5D7C00FF71E2 /* HeroAnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,9 @@
 		FCD8DC912CCA2FAD00FF71E2 /* DetailHeroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeroViewController.xib; sourceTree = "<group>"; };
 		FCD8DC942CCA300B00FF71E2 /* DetailHeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroViewModel.swift; sourceTree = "<group>"; };
 		FCD8DC962CCA30C000FF71E2 /* DetailHeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroUseCase.swift; sourceTree = "<group>"; };
+		FCD8DC9A2CCA33F100FF71E2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FCD8DC9D2CCA561D00FF71E2 /* HeroAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroAnnotation.swift; sourceTree = "<group>"; };
+		FCD8DC9F2CCA5D7C00FF71E2 /* HeroAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroAnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -178,11 +184,10 @@
 		FC5FB5712CC113F300E5DC5B /* Heroes */ = {
 			isa = PBXGroup;
 			children = (
-				FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */,
+				FCD8DC9C2CCA556600FF71E2 /* Cells */,
 				FC5FB5722CC1141000E5DC5B /* HeroesViewController.swift */,
+				FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */,
 				FC5FB5732CC1141000E5DC5B /* HeroesViewController.xib */,
-				FC43312F2CC16364005F4458 /* HeroCell.swift */,
-				FC4331302CC16364005F4458 /* HeroCell.xib */,
 			);
 			path = Heroes;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5FB57D2CC116BB00E5DC5B /* Hero.swift */,
+				FCD8DC9A2CCA33F100FF71E2 /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,8 +213,8 @@
 		FC65E0BA2CBEC6D5006D2F52 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */,
 				FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */,
+				FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */,
 				FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */,
 				FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */,
 			);
@@ -241,11 +247,7 @@
 				FC727ACF2CBE725E007FFA9D /* Data */,
 				FC5FB5552CC0F40D00E5DC5B /* Domain */,
 				FC5FB5542CC0F40300E5DC5B /* Presentation */,
-				FC727AB92CBE7250007FFA9D /* AppDelegate.swift */,
-				FC727ABA2CBE7250007FFA9D /* Assets.xcassets */,
-				FC727ABB2CBE7250007FFA9D /* Info.plist */,
-				FC727ABD2CBE7250007FFA9D /* LaunchScreen.storyboard */,
-				FC727AC02CBE7250007FFA9D /* SceneDelegate.swift */,
+				FCD8DC992CCA31E900FF71E2 /* Supporting Files */,
 			);
 			path = PracticaIOSAvanzado;
 			sourceTree = "<group>";
@@ -264,10 +266,10 @@
 		FC727AD02CBE7264007FFA9D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				FC727AF02CBE8113007FFA9D /* StoreDataProvider.swift */,
 				FC727AD42CBE76BA007FFA9D /* MOHero+CoreDataClass.swift */,
 				FC727AD62CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift */,
 				FC727AD82CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift */,
+				FC727AF02CBE8113007FFA9D /* StoreDataProvider.swift */,
 				FC727AD12CBE727A007FFA9D /* Model.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -276,9 +278,9 @@
 		FC727AE62CBE79A5007FFA9D /* ApiModel */ = {
 			isa = PBXGroup;
 			children = (
-				FC727AED2CBE7D79007FFA9D /* ApiTransformation.swift */,
-				FC727AEA2CBE7A5E007FFA9D /* ApiLocation.swift */,
 				FC727AE72CBE79B4007FFA9D /* ApiHero.swift */,
+				FC727AEA2CBE7A5E007FFA9D /* ApiLocation.swift */,
+				FC727AED2CBE7D79007FFA9D /* ApiTransformation.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -294,11 +296,34 @@
 		FCD8DC8F2CCA2F7100FF71E2 /* HeroDetail */ = {
 			isa = PBXGroup;
 			children = (
-				FCD8DC942CCA300B00FF71E2 /* DetailHeroViewModel.swift */,
 				FCD8DC902CCA2FAD00FF71E2 /* DetailHeroViewController.swift */,
+				FCD8DC942CCA300B00FF71E2 /* DetailHeroViewModel.swift */,
 				FCD8DC912CCA2FAD00FF71E2 /* DetailHeroViewController.xib */,
+				FCD8DC9D2CCA561D00FF71E2 /* HeroAnnotation.swift */,
+				FCD8DC9F2CCA5D7C00FF71E2 /* HeroAnnotationView.swift */,
 			);
 			path = HeroDetail;
+			sourceTree = "<group>";
+		};
+		FCD8DC992CCA31E900FF71E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC727AB92CBE7250007FFA9D /* AppDelegate.swift */,
+				FC727ABA2CBE7250007FFA9D /* Assets.xcassets */,
+				FC727ABB2CBE7250007FFA9D /* Info.plist */,
+				FC727ABD2CBE7250007FFA9D /* LaunchScreen.storyboard */,
+				FC727AC02CBE7250007FFA9D /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCD8DC9C2CCA556600FF71E2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FC43312F2CC16364005F4458 /* HeroCell.swift */,
+				FC4331302CC16364005F4458 /* HeroCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCD8DC972CCA30CB00FF71E2 /* DetailHeroUseCase.swift in Sources */,
+				FCD8DCA02CCA5D8600FF71E2 /* HeroAnnotationView.swift in Sources */,
 				FC727ACA2CBE7250007FFA9D /* AppDelegate.swift in Sources */,
 				FCD8DC922CCA2FAD00FF71E2 /* DetailHeroViewController.swift in Sources */,
 				FC727ACB2CBE7250007FFA9D /* LoginViewController.swift in Sources */,
@@ -463,8 +489,10 @@
 				FC727AEB2CBE7A64007FFA9D /* ApiLocation.swift in Sources */,
 				FC727AEE2CBE7D83007FFA9D /* ApiTransformation.swift in Sources */,
 				FC9E8CA52CC63C7B007A2A83 /* SecureDataStore.swift in Sources */,
+				FCD8DC9B2CCA33F700FF71E2 /* Location.swift in Sources */,
 				FC5FB5782CC115C700E5DC5B /* HeroUseCase.swift in Sources */,
 				FC5FB5742CC1141000E5DC5B /* HeroesViewController.swift in Sources */,
+				FCD8DC9E2CCA562D00FF71E2 /* HeroAnnotation.swift in Sources */,
 				FC5FB5872CC1257E00E5DC5B /* PIAObservable.swift in Sources */,
 				FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */,
 				FC727AE02CBE76BA007FFA9D /* MOHero+CoreDataClass.swift in Sources */,
@@ -530,7 +558,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T5K323YN9M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PracticaIOSAvanzado/Info.plist;
+				INFOPLIST_FILE = "PracticaIOSAvanzado/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -561,7 +589,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T5K323YN9M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PracticaIOSAvanzado/Info.plist;
+				INFOPLIST_FILE = "PracticaIOSAvanzado/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
