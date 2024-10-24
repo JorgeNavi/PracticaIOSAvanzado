@@ -18,6 +18,14 @@ class StoreDataProvider {
     
     static var shared: StoreDataProvider = .init()
     
+    static var managedModel: NSManagedObjectModel = {
+        let bundle = Bundle(for: StoreDataProvider.self)
+        guard let url = bundle.url(forResource: "Model", withExtension: "momd"), let model = NSManagedObjectModel(contentsOf: url) else {
+            fatalError("Error loading model from bundle")
+        }
+        return model
+    }()
+    
     private let persistentContainer: NSPersistentContainer//donde guardamos toda la información de nuestra aplicación.
     private let persistency: typePersistency //instanciamos nuestra persistencia del tipo de nuestro enum typePersistency y lo pasamos al init como parámetro
     
@@ -31,7 +39,7 @@ class StoreDataProvider {
     
     init(persistency: typePersistency = .disk) { //le damos por defecto el valor de .disk
         self.persistency = persistency //instanciamos nuestra persistencia
-        self.persistentContainer = NSPersistentContainer(name: "Model") //Aqui se le informa del modelo de datos que tiene que trabajar la BBDD.
+        self.persistentContainer = NSPersistentContainer(name: "Model", managedObjectModel: Self.managedModel) //Aqui se le informa del modelo de datos que tiene que trabajar la BBDD.
         if self.persistency == .memory { //Si el tipo de persistencia es .memory:
             let persistenStore = persistentContainer.persistentStoreDescriptions.first
             persistenStore?.url = URL(filePath: "/dev/null")

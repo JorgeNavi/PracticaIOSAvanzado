@@ -16,7 +16,15 @@ struct Hero: Hashable
     let photo: String
     let favorite: Bool
     
+    init(id: String, name: String, info: String, photo: String, favorite: Bool) {
+        self.id = id
+        self.name = name
+        self.info = info
+        self.photo = photo
+        self.favorite = favorite
+    }
     
+    //Constructor para mapear un MOHero a un instancia de Hero
     init(moHero: MOHero) {  //se incicializan (o crean) pasandoles un modelo de la BBDD
         self.id = moHero.id ?? ""
         self.name = moHero.name ?? ""

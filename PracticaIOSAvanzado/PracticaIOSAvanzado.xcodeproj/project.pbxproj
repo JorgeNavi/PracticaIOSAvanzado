@@ -19,6 +19,14 @@
 		FC5FB57F2CC116BD00E5DC5B /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57D2CC116BB00E5DC5B /* Hero.swift */; };
 		FC5FB5872CC1257E00E5DC5B /* PIAObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */; };
 		FC65E0BD2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */; };
+		FC67443A2CCAABA5005B7064 /* ApiProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6744392CCAABA5005B7064 /* ApiProviderTests.swift */; };
+		FC67443F2CCAAD26005B7064 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67443E2CCAAD1C005B7064 /* URLProtocolMock.swift */; };
+		FC6744412CCAB044005B7064 /* SecureDataStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6744402CCAB03A005B7064 /* SecureDataStorageMock.swift */; };
+		FC6744432CCAB052005B7064 /* DataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6744422CCAB04C005B7064 /* DataMock.swift */; };
+		FC6744452CCAB5D0005B7064 /* Heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = FC6744442CCAB5D0005B7064 /* Heroes.json */; };
+		FC67444A2CCAB6FD005B7064 /* HeroUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6744492CCAB6F4005B7064 /* HeroUseCaseTest.swift */; };
+		FC67444C2CCAB75A005B7064 /* PIAApiProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67444B2CCAB745005B7064 /* PIAApiProviderMock.swift */; };
+		FC67444E2CCAB9D7005B7064 /* HeroesViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67444D2CCAB9CF005B7064 /* HeroesViewModelTest.swift */; };
 		FC727AC52CBE7250007FFA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABA2CBE7250007FFA9D /* Assets.xcassets */; };
 		FC727AC72CBE7250007FFA9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABD2CBE7250007FFA9D /* LaunchScreen.storyboard */; };
 		FC727AC82CBE7250007FFA9D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC727ABF2CBE7250007FFA9D /* LoginViewController.xib */; };
@@ -77,6 +85,14 @@
 		FC5FB57D2CC116BB00E5DC5B /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAObservable.swift; sourceTree = "<group>"; };
 		FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiProvider.swift; sourceTree = "<group>"; };
+		FC6744392CCAABA5005B7064 /* ApiProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProviderTests.swift; sourceTree = "<group>"; };
+		FC67443E2CCAAD1C005B7064 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		FC6744402CCAB03A005B7064 /* SecureDataStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataStorageMock.swift; sourceTree = "<group>"; };
+		FC6744422CCAB04C005B7064 /* DataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMock.swift; sourceTree = "<group>"; };
+		FC6744442CCAB5D0005B7064 /* Heroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Heroes.json; sourceTree = "<group>"; };
+		FC6744492CCAB6F4005B7064 /* HeroUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCaseTest.swift; sourceTree = "<group>"; };
+		FC67444B2CCAB745005B7064 /* PIAApiProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiProviderMock.swift; sourceTree = "<group>"; };
+		FC67444D2CCAB9CF005B7064 /* HeroesViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewModelTest.swift; sourceTree = "<group>"; };
 		FC727A7D2CBE6F0C007FFA9D /* PracticaIOSAvanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaIOSAvanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC727A932CBE6F0E007FFA9D /* PracticaIOSAvanzadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOSAvanzadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC727A9D2CBE6F0E007FFA9D /* PracticaIOSAvanzadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOSAvanzadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +237,59 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		FC67443B2CCAACD1005B7064 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FC67444B2CCAB745005B7064 /* PIAApiProviderMock.swift */,
+				FC6744442CCAB5D0005B7064 /* Heroes.json */,
+				FC6744422CCAB04C005B7064 /* DataMock.swift */,
+				FC6744402CCAB03A005B7064 /* SecureDataStorageMock.swift */,
+				FC67443E2CCAAD1C005B7064 /* URLProtocolMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		FC67443C2CCAACDC005B7064 /* NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC6744392CCAABA5005B7064 /* ApiProviderTests.swift */,
+			);
+			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		FC67443D2CCAACF1005B7064 /* CoreDataTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC7807D02CC25CC600A53245 /* StoreProviderTests.swift */,
+			);
+			path = CoreDataTests;
+			sourceTree = "<group>";
+		};
+		FC6744462CCAB6B6005B7064 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FC67443D2CCAACF1005B7064 /* CoreDataTests */,
+				FC67443C2CCAACDC005B7064 /* NetworkTests */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FC6744472CCAB6BF005B7064 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FC6744492CCAB6F4005B7064 /* HeroUseCaseTest.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FC6744482CCAB6C9005B7064 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FC67444D2CCAB9CF005B7064 /* HeroesViewModelTest.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		FC727A742CBE6F0C007FFA9D = {
 			isa = PBXGroup;
 			children = (
@@ -288,7 +357,10 @@
 		FC7807D12CC25CC600A53245 /* PracticaIOSAvanzadoTests */ = {
 			isa = PBXGroup;
 			children = (
-				FC7807D02CC25CC600A53245 /* StoreProviderTests.swift */,
+				FC6744482CCAB6C9005B7064 /* Presentation */,
+				FC6744472CCAB6BF005B7064 /* Domain */,
+				FC6744462CCAB6B6005B7064 /* Data */,
+				FC67443B2CCAACD1005B7064 /* Mocks */,
 			);
 			path = PracticaIOSAvanzadoTests;
 			sourceTree = "<group>";
@@ -458,6 +530,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6744452CCAB5D0005B7064 /* Heroes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +585,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC7807D22CC25CC600A53245 /* StoreProviderTests.swift in Sources */,
+				FC67443F2CCAAD26005B7064 /* URLProtocolMock.swift in Sources */,
+				FC6744412CCAB044005B7064 /* SecureDataStorageMock.swift in Sources */,
+				FC67444C2CCAB75A005B7064 /* PIAApiProviderMock.swift in Sources */,
+				FC67444A2CCAB6FD005B7064 /* HeroUseCaseTest.swift in Sources */,
+				FC67443A2CCAABA5005B7064 /* ApiProviderTests.swift in Sources */,
+				FC67444E2CCAB9D7005B7064 /* HeroesViewModelTest.swift in Sources */,
+				FC6744432CCAB052005B7064 /* DataMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
