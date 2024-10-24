@@ -6,6 +6,7 @@ class DetailHeroViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     private var viewModel: DetailHeroViewModel
+    private var locationManager: CLLocationManager = CLLocationManager()
     
     init(viewModel: DetailHeroViewModel) {
         self.viewModel = viewModel
@@ -16,11 +17,18 @@ class DetailHeroViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func configureMap() {
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.showsUserTrackingButton = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureMap()
         setBiding()
-        mapView.delegate = self
         viewModel.loadData()
+        checkLocationAuthorizationStatus()
     }
     
     func setBiding() {
@@ -51,6 +59,24 @@ class DetailHeroViewController: UIViewController {
         
         if let annotation = viewModel.annotations.first {
             mapView.region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 100000, longitudinalMeters: 100000) //muestra donde se situa el mapa (el centro es la coordicnada y los metros el zoom)
+        }
+    }
+    
+    //Vamos a establecer un método para pedirle la localización al usuario o para trackearle o no dependiendo del estado
+    private func checkLocationAuthorizationStatus() {
+        
+        let authorizationStatus = locationManager.authorizationStatus
+        
+        switch authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        case .denied, .restricted:
+            mapView.showsUserLocation = false
+            mapView.showsUserTrackingButton = false
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        @unknown default:
+            break
         }
     }
 }

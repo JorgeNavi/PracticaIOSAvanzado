@@ -26,6 +26,7 @@ class HeroAnnotationView: MKAnnotationView {
         let view = UIImageView(image: UIImage(resource: .bolaDragon))
         addSubview(view)
         view.frame = self.frame
+        //Botón de detalle a la derecha del callout
         //rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
     }
     
