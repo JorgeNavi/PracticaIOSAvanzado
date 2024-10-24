@@ -38,6 +38,10 @@
 		FC7807D22CC25CC600A53245 /* StoreProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7807D02CC25CC600A53245 /* StoreProviderTests.swift */; };
 		FC9E8CA32CC63C16007A2A83 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FC9E8CA22CC63C16007A2A83 /* KeychainSwift */; };
 		FC9E8CA52CC63C7B007A2A83 /* SecureDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E8CA42CC63C6E007A2A83 /* SecureDataStore.swift */; };
+		FCD8DC922CCA2FAD00FF71E2 /* DetailHeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC902CCA2FAD00FF71E2 /* DetailHeroViewController.swift */; };
+		FCD8DC932CCA2FAD00FF71E2 /* DetailHeroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD8DC912CCA2FAD00FF71E2 /* DetailHeroViewController.xib */; };
+		FCD8DC952CCA301600FF71E2 /* DetailHeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC942CCA300B00FF71E2 /* DetailHeroViewModel.swift */; };
+		FCD8DC972CCA30CB00FF71E2 /* DetailHeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8DC962CCA30C000FF71E2 /* DetailHeroUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,10 @@
 		FC7807CF2CC250A200A53245 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		FC7807D02CC25CC600A53245 /* StoreProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProviderTests.swift; sourceTree = "<group>"; };
 		FC9E8CA42CC63C6E007A2A83 /* SecureDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataStore.swift; sourceTree = "<group>"; };
+		FCD8DC902CCA2FAD00FF71E2 /* DetailHeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroViewController.swift; sourceTree = "<group>"; };
+		FCD8DC912CCA2FAD00FF71E2 /* DetailHeroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeroViewController.xib; sourceTree = "<group>"; };
+		FCD8DC942CCA300B00FF71E2 /* DetailHeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroViewModel.swift; sourceTree = "<group>"; };
+		FCD8DC962CCA30C000FF71E2 /* DetailHeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -131,10 +139,11 @@
 		FC5FB5542CC0F40300E5DC5B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */,
-				FC5FB5712CC113F300E5DC5B /* Heroes */,
-				FC5FB5562CC0F41300E5DC5B /* Login */,
 				FC5FB5572CC0F41A00E5DC5B /* Splash */,
+				FC5FB5562CC0F41300E5DC5B /* Login */,
+				FC5FB5712CC113F300E5DC5B /* Heroes */,
+				FCD8DC8F2CCA2F7100FF71E2 /* HeroDetail */,
+				FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 		FC5FB5762CC115AE00E5DC5B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				FCD8DC962CCA30C000FF71E2 /* DetailHeroUseCase.swift */,
 				FC5FB5772CC115C300E5DC5B /* HeroUseCase.swift */,
 			);
 			path = UseCases;
@@ -279,6 +289,16 @@
 				FC7807D02CC25CC600A53245 /* StoreProviderTests.swift */,
 			);
 			path = PracticaIOSAvanzadoTests;
+			sourceTree = "<group>";
+		};
+		FCD8DC8F2CCA2F7100FF71E2 /* HeroDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FCD8DC942CCA300B00FF71E2 /* DetailHeroViewModel.swift */,
+				FCD8DC902CCA2FAD00FF71E2 /* DetailHeroViewController.swift */,
+				FCD8DC912CCA2FAD00FF71E2 /* DetailHeroViewController.xib */,
+			);
+			path = HeroDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +423,7 @@
 				FC4331312CC16364005F4458 /* HeroCell.xib in Resources */,
 				FC727AC72CBE7250007FFA9D /* LaunchScreen.storyboard in Resources */,
 				FC727AC82CBE7250007FFA9D /* LoginViewController.xib in Resources */,
+				FCD8DC932CCA2FAD00FF71E2 /* DetailHeroViewController.xib in Resources */,
 				FC5FB5752CC1141000E5DC5B /* HeroesViewController.xib in Resources */,
 				FC727AC92CBE7250007FFA9D /* SplashViewController.xib in Resources */,
 			);
@@ -429,11 +450,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD8DC972CCA30CB00FF71E2 /* DetailHeroUseCase.swift in Sources */,
 				FC727ACA2CBE7250007FFA9D /* AppDelegate.swift in Sources */,
+				FCD8DC922CCA2FAD00FF71E2 /* DetailHeroViewController.swift in Sources */,
 				FC727ACB2CBE7250007FFA9D /* LoginViewController.swift in Sources */,
 				FC727ACC2CBE7250007FFA9D /* SceneDelegate.swift in Sources */,
 				FC727ACD2CBE7250007FFA9D /* SplashViewController.swift in Sources */,
 				FC65E0BD2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */,
+				FCD8DC952CCA301600FF71E2 /* DetailHeroViewModel.swift in Sources */,
 				FC727AD32CBE727A007FFA9D /* Model.xcdatamodeld in Sources */,
 				FC5FB56D2CC1135700E5DC5B /* PIAEndPoint.swift in Sources */,
 				FC727AEB2CBE7A64007FFA9D /* ApiLocation.swift in Sources */,
