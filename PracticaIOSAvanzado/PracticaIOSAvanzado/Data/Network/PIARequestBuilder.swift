@@ -86,6 +86,5 @@ class PIARequestBuilder {
         } catch {
             throw PIAApiError.URLMalFormed
         }
-        
     }
 }

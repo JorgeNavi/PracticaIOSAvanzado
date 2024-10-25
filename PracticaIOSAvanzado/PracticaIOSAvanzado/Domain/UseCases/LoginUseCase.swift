@@ -9,12 +9,16 @@ class LoginUseCase: LoginUseCaseProtocol {
     private let requestBuilder: PIARequestBuilder
     private let secureStorage: SecureDataStoreProtocol
     
-    init(requestBuilder: PIARequestBuilder, secureStorage: SecureDataStoreProtocol) {
+    init(requestBuilder: PIARequestBuilder = PIARequestBuilder(), secureStorage: SecureDataStoreProtocol = SecureDataStore()) {
         self.requestBuilder = requestBuilder
         self.secureStorage = secureStorage
     }
     
     func login(username: String, password: String, completion: @escaping (Result<Void, PIAApiError>) -> Void) {
+        guard !username.isEmpty, !password.isEmpty else {
+            completion(.failure(PIAApiError.invalidCredentials))
+            return
+        }
         do {
             let request = try requestBuilder.buildLoginRequest(username: username, password: password)
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -29,7 +33,7 @@ class LoginUseCase: LoginUseCaseProtocol {
                 }
                 switch httpResponse.statusCode {
                 case 200:
-                    if let data = data, let token = self.parseToken(responseData: data) {
+                    if let data, let token = self.parseToken(responseData: data) {
                         self.secureStorage.saveToken(token)
                         completion(.success(()))
                     } else {

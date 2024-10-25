@@ -10,7 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="PracticaIOSAvanzado" customModuleProvider="target">
             <connections>
+                <outlet property="emailField" destination="qzC-N5-VZ4" id="CA2-f9-KBT"/>
                 <outlet property="loginBackground" destination="IZA-3C-rKN" id="iSN-pC-8QS"/>
+                <outlet property="loginContainer" destination="XSa-30-b80" id="rKR-Lv-Oks"/>
+                <outlet property="passwordFile" destination="Az9-bx-fwU" id="Ve6-nC-bjM"/>
+                <outlet property="spinner" destination="ejS-b7-hBW" id="njN-ld-829"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,24 +26,55 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo3" translatesAutoresizingMaskIntoConstraints="NO" id="IZA-3C-rKN">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwc-NU-mUS" userLabel="Login">
-                    <rect key="frame" x="150" y="633" width="93" height="35"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Login"/>
-                    <connections>
-                        <action selector="goToHeroes:" destination="-1" eventType="touchUpInside" id="dMy-D2-ZCi"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lop-XD-rzm">
+                    <rect key="frame" x="0.0" y="352" width="393" height="148"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XSa-30-b80">
+                            <rect key="frame" x="12" y="12" width="369" height="124"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzC-N5-VZ4">
+                                    <rect key="frame" x="0.0" y="0.0" width="369" height="35.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Az9-bx-fwU">
+                                    <rect key="frame" x="0.0" y="35.666666666666686" width="369" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                </textField>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ejS-b7-hBW">
+                                    <rect key="frame" x="0.0" y="69.666666666666686" width="369" height="20"/>
+                                </activityIndicatorView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL8-r2-XfG">
+                                    <rect key="frame" x="0.0" y="89.666666666666686" width="369" height="34.333333333333343"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                    <connections>
+                                        <action selector="goToHeroes:" destination="-1" eventType="touchUpInside" id="MSe-Hw-yNf"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="XSa-30-b80" firstAttribute="leading" secondItem="Lop-XD-rzm" secondAttribute="leading" constant="12" id="Gca-sc-LfI"/>
+                        <constraint firstAttribute="bottom" secondItem="XSa-30-b80" secondAttribute="bottom" constant="12" id="Rsu-z6-BzT"/>
+                        <constraint firstItem="XSa-30-b80" firstAttribute="top" secondItem="Lop-XD-rzm" secondAttribute="top" constant="12" id="ZjN-HL-G30"/>
+                        <constraint firstAttribute="trailing" secondItem="XSa-30-b80" secondAttribute="trailing" constant="12" id="yW8-xg-mJe"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Iwc-NU-mUS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="150" id="Agi-Yc-WJt"/>
+                <constraint firstItem="Lop-XD-rzm" firstAttribute="leading" secondItem="IZA-3C-rKN" secondAttribute="leading" id="86i-qN-OaK"/>
                 <constraint firstItem="IZA-3C-rKN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ax1-eM-0wS"/>
+                <constraint firstItem="Lop-XD-rzm" firstAttribute="centerX" secondItem="IZA-3C-rKN" secondAttribute="centerX" id="CqP-Ax-8eT"/>
                 <constraint firstAttribute="trailing" secondItem="IZA-3C-rKN" secondAttribute="trailing" id="FKH-n8-kUW"/>
                 <constraint firstAttribute="bottom" secondItem="IZA-3C-rKN" secondAttribute="bottom" id="Qej-KX-qKx"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iwc-NU-mUS" secondAttribute="trailing" constant="150" id="lJU-B8-GXr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iwc-NU-mUS" secondAttribute="bottom" constant="150" id="o3w-sc-77n"/>
+                <constraint firstItem="Lop-XD-rzm" firstAttribute="centerY" secondItem="IZA-3C-rKN" secondAttribute="centerY" id="T9H-yT-coo"/>
+                <constraint firstItem="Lop-XD-rzm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="293" id="sCk-mO-XKp"/>
                 <constraint firstItem="IZA-3C-rKN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ux3-Pe-Axv"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>

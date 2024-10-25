@@ -3,12 +3,26 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var loginBackground: UIImageView!
+    @IBOutlet weak var loginContainer: UIStackView!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+
     
-    private let token = "eyJhbGciOiJIUzI1NiIsImtpZCI6InByaXZhdGUiLCJ0eXAiOiJKV1QifQ.eyJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiaWRlbnRpZnkiOiIxRTgxNzY1OC02MkMyLTQ1RUItQTY1Mi03QTVCMTk0MUI5QUMiLCJlbWFpbCI6ImpvcmdlLmVzcGxpZWdvQGdtYWlsLmNvbSJ9.qSQDP5ha2aaLGDTPZcb1FfILwWpo7wCdHJ0iKmhvKN0"
+    private var viewModel = LoginViewModel()
+   
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: "LoginViewController", bundle: Bundle(for: type(of: self)))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
         /*let apiProvider = PIAApiProvider()
          
          apiProvider.loadHeroes { result in
@@ -22,9 +36,37 @@ class LoginViewController: UIViewController {
          */
     }
     
+    private func bind() {
+        viewModel.onStateChanged.bind { [weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case .loading:
+                self.spinner.startAnimating()
+                self.loginContainer.isHidden = true
+            case .success:
+                self.spinner.stopAnimating()
+                self.loginContainer.isHidden = true
+                let heroesViewController = HeroesViewController()
+                navigationController?.pushViewController(heroesViewController, animated: true)
+            case .error(let reason):
+                self.loginContainer.isHidden = true
+                self.spinner.stopAnimating()
+                let alert = UIAlertController(title: "Login Error", message: reason, preferredStyle: .alert)
+                //añadimos al alert un botón "OK" para salir
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                //Se necesita el present para mostrar vistas modales
+                self.present(alert, animated: true)
+                self.viewModel.onStateChanged.value = .none
+            case .none:
+                self.loginContainer.isHidden = false
+            }
+        }
+    }
+    
     @IBAction func goToHeroes(_ sender: Any) {
-        SecureDataStore.shared.saveToken(token) //guardamos el token en el keychain y pasamos a la vista de heroes
-        
+        guard let username = emailField.text, let password = passwordField.text else { return }
+        viewModel.login(username: username, password: password)
         let heroesViewController = HeroesViewController()
         navigationController?.pushViewController(heroesViewController, animated: true)
     }
