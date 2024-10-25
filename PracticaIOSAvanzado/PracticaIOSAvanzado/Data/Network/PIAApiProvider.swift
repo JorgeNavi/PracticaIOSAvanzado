@@ -37,13 +37,13 @@ class PIAApiProvider: PIAApiProviderProtocol {
     private func makeRequest<G: Decodable>(request: URLRequest, completion: @escaping ((Result<G, PIAApiError>) -> Void)) {
         session.dataTask(with: request) { data, response, error in //session hace sus casos en que recibe data, hay response del servidor y hay algun error.
             if let error { //si hay error:
-                completion(.failure(.ServerError(error: error))) //lanzamos un error controlado (personalizado) del servidor
+                completion(.failure(.serverError(error: error))) //lanzamos un error controlado (personalizado) del servidor
                 return //y return para que no se siga ejecutando código secuencialmente
             }
             let httpResponse = response as? HTTPURLResponse //Se instancia una HTTPURLResponse como httpResponse
             let statusCode = httpResponse?.statusCode //Se instancia un httpResponse?.statusCode como statusCode
             if statusCode != 200 { //Si statusCode no es igual a 200 (codigo de que todo ha ido OK):
-                completion(.failure(.ApiError(statusCode: statusCode ?? -1))) //lanzamos un error controlado (personalizado) de la Api con el valor del statusCode o -1 por defecto
+                completion(.failure(.apiError(statusCode: statusCode ?? -1))) //lanzamos un error controlado (personalizado) de la Api con el valor del statusCode o -1 por defecto
                 return //y return para que no se siga ejecutando código secuencialmente
             }
             if let data { //si se reciben datos:

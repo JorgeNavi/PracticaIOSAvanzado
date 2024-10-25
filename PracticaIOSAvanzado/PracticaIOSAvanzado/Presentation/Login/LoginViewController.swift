@@ -3,6 +3,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var loginBackground: UIImageView!
+    
     private let token = "eyJhbGciOiJIUzI1NiIsImtpZCI6InByaXZhdGUiLCJ0eXAiOiJKV1QifQ.eyJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiaWRlbnRpZnkiOiIxRTgxNzY1OC02MkMyLTQ1RUItQTY1Mi03QTVCMTk0MUI5QUMiLCJlbWFpbCI6ImpvcmdlLmVzcGxpZWdvQGdtYWlsLmNvbSJ9.qSQDP5ha2aaLGDTPZcb1FfILwWpo7wCdHJ0iKmhvKN0"
     
     override func viewDidLoad() {

@@ -5,6 +5,7 @@
 //  Created by Jorge Navidad Espliego on 17/10/24.
 //
 import UIKit
+import Foundation
 
 enum statusHeroes {
     case dataUpdated
@@ -47,5 +48,11 @@ class HeroesViewModel {
             return nil //si no, devuelve nil porque estaría devolviendo un objeto
         }
         return heroes[index] //devuelveme ese heroe del indice
+    }
+    
+    //establecemos el metodo de logout:
+    func logout() {
+        SecureDataStore.shared.deleteToken()
+        StoreDataProvider.shared.clearDDBB()
     }
 }

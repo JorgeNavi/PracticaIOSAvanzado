@@ -37,8 +37,13 @@ class HeroesViewController: UIViewController {
         configureCollectionView()
         setBinding()//Hay que implementar el binding antes de recibir porque sin el binding no nos llega la notificación de que se ha ca,biado el estado del viewModel
         viewModel.loadData(filter: nil)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutAction)) //cambia el comportamiento y apariencia del botón back por el de logout que realiza la accion establecida en el metodo de abajo
         
-        
+    }
+    
+    @objc func logoutAction() { //llama al metodo logout del viewModel que elimina el token y limpia la BBDD
+        viewModel.logout()
+        navigationController?.popToRootViewController(animated: true) //navega a la primera vista de la app
     }
     
     //establecemos el Binding con el viewModel para ser notificados de los cambios de estado.

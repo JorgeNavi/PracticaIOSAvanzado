@@ -13,11 +13,11 @@ enum PIAApiError: Error, CustomStringConvertible { //CustomStringConvertible jun
     
     var description: String { //le otorga valor a description segun el error
         switch self {
-            case .invalidRequest:
+        case .invalidRequest:
             return "Invalid request"
-        case .ServerError(error: let error):
+        case .serverError(error: let error):
             return "Server error: \((error as NSError).code)" //nos permite imprimir el codigo de error que ha recibido
-        case .ApiError(statusCode: let statusCode):
+        case .apiError(statusCode: let statusCode):
             return "API error: \(statusCode)"
         case .dataError:
             return "Data error"
@@ -29,17 +29,23 @@ enum PIAApiError: Error, CustomStringConvertible { //CustomStringConvertible jun
             return "URL malformed"
         case .heroNotFound(idHero: let idHero):
             return "Hero \(idHero) not found"
+        case .invalidCredentials:
+            return "Invalid credentials"
+        case .genericError:
+            return "Unknown error"
         }
 
     }
     
     case invalidRequest
-    case ServerError(error: Error)
-    case ApiError(statusCode: Int)
+    case serverError(error: Error)
+    case apiError(statusCode: Int)
     case dataError
     case parsingDataError
     case sessionTokenMissing
     case URLMalFormed
     case heroNotFound(idHero: String)
+    case invalidCredentials
+    case genericError
 }
 

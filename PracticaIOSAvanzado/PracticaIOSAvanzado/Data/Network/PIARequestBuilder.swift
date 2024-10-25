@@ -70,4 +70,22 @@ class PIARequestBuilder {
         }
         throw PIAApiError.URLMalFormed
     }
+    
+    func buildLoginRequest(endPoint: PIAEndPoint = .login, username: String, password: String) throws(PIAApiError) -> URLRequest {
+        
+        let loginData = Data("\(username):\(password)".utf8)
+        let base64LoginString = loginData.base64EncodedString()
+        
+        do {
+            let url = try self.url(endPoint: endPoint)
+            var request = URLRequest(url: url)
+            request.httpMethod = endPoint.httpMethod() // O el método adecuado para tu API
+            request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            return request
+        } catch {
+            throw PIAApiError.URLMalFormed
+        }
+        
+    }
 }

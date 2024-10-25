@@ -11,6 +11,7 @@ enum PIAEndPoint {
     case heroes
     case locations
     case transformations
+    case login
     
     //En este método, se establece la URL que nos da la API en los distintos endPoints para poder informar de las mismas como path
     func path() -> String {
@@ -21,12 +22,14 @@ enum PIAEndPoint {
             return "/api/heros/locations"
         case .transformations:
             return "/api/heros/tranformations"
+        case .login:
+            return "/api/auth/login"
         }
     }
     
     func httpMethod() -> String {
         switch self {
-        case .heroes, .locations, .transformations:
+        case .heroes, .locations, .transformations, .login:
             "POST"
         }
     }

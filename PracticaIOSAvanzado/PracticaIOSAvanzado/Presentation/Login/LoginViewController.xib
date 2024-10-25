@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="PracticaIOSAvanzado" customModuleProvider="target">
             <connections>
+                <outlet property="loginBackground" destination="IZA-3C-rKN" id="iSN-pC-8QS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,22 +19,34 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kz7-CN-NFq">
-                    <rect key="frame" x="164" y="409" width="66" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo3" translatesAutoresizingMaskIntoConstraints="NO" id="IZA-3C-rKN">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwc-NU-mUS" userLabel="Login">
+                    <rect key="frame" x="150" y="633" width="93" height="35"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Login"/>
                     <connections>
-                        <action selector="goToHeroes:" destination="-1" eventType="touchUpInside" id="YtT-7z-KW9"/>
+                        <action selector="goToHeroes:" destination="-1" eventType="touchUpInside" id="dMy-D2-ZCi"/>
                     </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="132" y="-11"/>
+            <constraints>
+                <constraint firstItem="Iwc-NU-mUS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="150" id="Agi-Yc-WJt"/>
+                <constraint firstItem="IZA-3C-rKN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ax1-eM-0wS"/>
+                <constraint firstAttribute="trailing" secondItem="IZA-3C-rKN" secondAttribute="trailing" id="FKH-n8-kUW"/>
+                <constraint firstAttribute="bottom" secondItem="IZA-3C-rKN" secondAttribute="bottom" id="Qej-KX-qKx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iwc-NU-mUS" secondAttribute="trailing" constant="150" id="lJU-B8-GXr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iwc-NU-mUS" secondAttribute="bottom" constant="150" id="o3w-sc-77n"/>
+                <constraint firstItem="IZA-3C-rKN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ux3-Pe-Axv"/>
+            </constraints>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
+        <image name="fondo3" width="1080" height="1920"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

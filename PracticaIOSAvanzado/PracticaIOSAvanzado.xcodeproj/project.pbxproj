@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FC0F72EB2CCB7FB5002B9A21 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FC0F72EA2CCB7FB5002B9A21 /* Kingfisher */; };
+		FC0F72EF2CCB9943002B9A21 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F72EE2CCB993F002B9A21 /* LoginUseCase.swift */; };
+		FC0F72F12CCBA019002B9A21 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F72F02CCBA014002B9A21 /* LoginViewModel.swift */; };
 		FC4331312CC16364005F4458 /* HeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4331302CC16364005F4458 /* HeroCell.xib */; };
 		FC4331322CC16364005F4458 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC43312F2CC16364005F4458 /* HeroCell.swift */; };
 		FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */; };
@@ -74,6 +76,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC0F72EE2CCB993F002B9A21 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		FC0F72F02CCBA014002B9A21 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FC43312F2CC16364005F4458 /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
 		FC4331302CC16364005F4458 /* HeroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroCell.xib; sourceTree = "<group>"; };
 		FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiError.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 		FC5FB5562CC0F41300E5DC5B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FC0F72F02CCBA014002B9A21 /* LoginViewModel.swift */,
 				FC727ABE2CBE7250007FFA9D /* LoginViewController.swift */,
 				FC727ABF2CBE7250007FFA9D /* LoginViewController.xib */,
 			);
@@ -213,6 +218,7 @@
 		FC5FB5762CC115AE00E5DC5B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				FC0F72EE2CCB993F002B9A21 /* LoginUseCase.swift */,
 				FCD8DC962CCA30C000FF71E2 /* DetailHeroUseCase.swift */,
 				FC5FB5772CC115C300E5DC5B /* HeroUseCase.swift */,
 			);
@@ -569,6 +575,7 @@
 				FCD8DC9B2CCA33F700FF71E2 /* Location.swift in Sources */,
 				FC5FB5782CC115C700E5DC5B /* HeroUseCase.swift in Sources */,
 				FC5FB5742CC1141000E5DC5B /* HeroesViewController.swift in Sources */,
+				FC0F72F12CCBA019002B9A21 /* LoginViewModel.swift in Sources */,
 				FCD8DC9E2CCA562D00FF71E2 /* HeroAnnotation.swift in Sources */,
 				FC5FB5872CC1257E00E5DC5B /* PIAObservable.swift in Sources */,
 				FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */,
@@ -581,6 +588,7 @@
 				FC4331322CC16364005F4458 /* HeroCell.swift in Sources */,
 				FC727AE92CBE79BB007FFA9D /* ApiHero.swift in Sources */,
 				FC727AE42CBE76BA007FFA9D /* MOTransformation+CoreDataClass.swift in Sources */,
+				FC0F72EF2CCB9943002B9A21 /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
