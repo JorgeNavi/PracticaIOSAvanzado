@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC0F72EB2CCB7FB5002B9A21 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FC0F72EA2CCB7FB5002B9A21 /* Kingfisher */; };
 		FC4331312CC16364005F4458 /* HeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4331302CC16364005F4458 /* HeroCell.xib */; };
 		FC4331322CC16364005F4458 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC43312F2CC16364005F4458 /* HeroCell.swift */; };
 		FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */; };
@@ -137,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC0F72EB2CCB7FB5002B9A21 /* Kingfisher in Frameworks */,
 				FC9E8CA32CC63C16007A2A83 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +418,7 @@
 			name = PracticaIOSAvanzado;
 			packageProductDependencies = (
 				FC9E8CA22CC63C16007A2A83 /* KeychainSwift */,
+				FC0F72EA2CCB7FB5002B9A21 /* Kingfisher */,
 			);
 			productName = PracticaIOSAvanzado;
 			productReference = FC727A7D2CBE6F0C007FFA9D /* PracticaIOSAvanzado.app */;
@@ -498,6 +501,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				FC9E8CA12CC63C16007A2A83 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				FC0F72E92CCB7FB5002B9A21 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FC727A7E2CBE6F0C007FFA9D /* Products */;
@@ -926,6 +930,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FC0F72E92CCB7FB5002B9A21 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
 		FC9E8CA12CC63C16007A2A83 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
@@ -937,6 +949,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FC0F72EA2CCB7FB5002B9A21 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC0F72E92CCB7FB5002B9A21 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		FC9E8CA22CC63C16007A2A83 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FC9E8CA12CC63C16007A2A83 /* XCRemoteSwiftPackageReference "keychain-swift" */;

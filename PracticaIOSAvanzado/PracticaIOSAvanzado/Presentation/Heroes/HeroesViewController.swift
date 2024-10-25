@@ -75,7 +75,7 @@ class HeroesViewController: UIViewController {
         //se le pasa el identificador de la celda cellNib: UINib(nibName: HeroCell.identifier
         //y devuelve una celda, un indexPath y un item(hero):
         let cellRegister = UICollectionView.CellRegistration<HeroCell, Hero>(cellNib: UINib(nibName:        HeroCell.identifier, bundle: nil)) { cell, indexPath, hero in
-            cell.lbHeroName.text = hero.name //La etiqueta de nombre de heroes de la celda recibe el valor el nombre de dicho héroe
+            cell.configurewith(hero: hero) //le pasamos el metodo de configracion de la celda
             }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, IndexPath, hero in //Aquí se está inicializando el dataSource para un UICollectionView específico. El cellProvider es un bloque de código (closure) que especifica cómo se debería crear y configurar cada celda de la colección cuando es necesario.
@@ -110,7 +110,7 @@ extension HeroesViewController: UICollectionViewDelegate, UICollectionViewDelega
         •    collectionViewLayout: El layout que se está usando en el UICollectionView. Aunque en este caso no se utiliza directamente en el cuerpo de la función, es útil para casos donde el tamaño de la celda puede depender del diseño general.
         •    indexPath: La posición de la celda dentro del collectionView. Esto puede ser útil si el tamaño de las celdas varía en diferentes secciones o filas.
         */
-        return CGSize(width: collectionView.bounds.size.width, height: 80) /*
+        return CGSize(width: collectionView.bounds.size.width, height: 100) /*
         Aquí se especifica el tamaño de cada celda. Esta implementación establece que:
         •    La anchura (width) de la celda será igual al ancho completo del collectionView. Esto significa que cada celda se extenderá de lado a lado dentro de la vista de colección.
         •    La altura (height) de la celda será de 80 puntos. Este es un valor fijo que aplicará a todas las celdas, haciendo que todas tengan la misma altura.
