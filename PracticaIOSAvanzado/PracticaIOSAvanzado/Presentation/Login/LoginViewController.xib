@@ -27,8 +27,49 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCw-NI-65p">
-                    <rect key="frame" x="14" y="317" width="365" height="218"/>
+                    <rect key="frame" x="14" y="329" width="364" height="194.33333333333337"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-Bb-cDt">
+                            <rect key="frame" x="12" y="12" width="340" height="170.33333333333334"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zli-gz-GrH" userLabel="Email">
+                                    <rect key="frame" x="0.0" y="0.0" width="340" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eeX-fW-cY5">
+                                    <rect key="frame" x="0.0" y="50" width="340" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                </textField>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ag2-5I-uGb">
+                                    <rect key="frame" x="0.0" y="100" width="340" height="20"/>
+                                </activityIndicatorView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jO8-d3-lG2">
+                                    <rect key="frame" x="0.0" y="136" width="340" height="34.333333333333343"/>
+                                    <color key="tintColor" systemColor="systemBlueColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Sign in"/>
+                                    <connections>
+                                        <action selector="onTappedLoginButton:" destination="-1" eventType="touchUpInside" id="VAx-Ty-VB1"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="wtv-VS-jua"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="LIc-Bb-cDt" secondAttribute="bottom" constant="12" id="A6V-nC-Ghd"/>
+                        <constraint firstItem="LIc-Bb-cDt" firstAttribute="top" secondItem="NCw-NI-65p" secondAttribute="top" constant="12" id="Dq9-0E-A4Y"/>
+                        <constraint firstItem="LIc-Bb-cDt" firstAttribute="leading" secondItem="NCw-NI-65p" secondAttribute="leading" constant="12" id="NwW-7g-3Te"/>
+                        <constraint firstItem="LIc-Bb-cDt" firstAttribute="top" secondItem="NCw-NI-65p" secondAttribute="top" constant="12" id="O7o-3P-gdE"/>
+                        <constraint firstAttribute="trailing" secondItem="LIc-Bb-cDt" secondAttribute="trailing" constant="12" id="SBj-go-duW"/>
+                        <constraint firstAttribute="bottom" secondItem="LIc-Bb-cDt" secondAttribute="bottom" constant="12" id="ghw-GX-CLT"/>
+                        <constraint firstAttribute="trailing" secondItem="LIc-Bb-cDt" secondAttribute="trailing" constant="12" id="u73-gL-OLg"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="12"/>
@@ -36,52 +77,16 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-Bb-cDt">
-                    <rect key="frame" x="26" y="340" width="341" height="172"/>
-                    <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zli-gz-GrH" userLabel="Email">
-                            <rect key="frame" x="0.0" y="0.0" width="341" height="35.666666666666664"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eeX-fW-cY5">
-                            <rect key="frame" x="0.0" y="51.666666666666686" width="341" height="34"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                        </textField>
-                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ag2-5I-uGb">
-                            <rect key="frame" x="0.0" y="101.66666666666669" width="341" height="20"/>
-                        </activityIndicatorView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jO8-d3-lG2">
-                            <rect key="frame" x="0.0" y="137.66666666666669" width="341" height="34.333333333333343"/>
-                            <color key="tintColor" systemColor="systemBlueColor"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Sign in"/>
-                            <connections>
-                                <action selector="onTappedLoginButton:" destination="-1" eventType="touchUpInside" id="VAx-Ty-VB1"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="wtv-VS-jua"/>
-                    </constraints>
-                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="yuh-rj-CUE"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="mf7-0C-LtF" firstAttribute="centerX" secondItem="fl6-bp-dQj" secondAttribute="centerX" id="NcI-gi-xn1"/>
-                <constraint firstItem="LIc-Bb-cDt" firstAttribute="centerX" secondItem="NCw-NI-65p" secondAttribute="centerX" id="Pam-yZ-FFk"/>
                 <constraint firstItem="mf7-0C-LtF" firstAttribute="centerY" secondItem="fl6-bp-dQj" secondAttribute="centerY" id="WbL-vL-RV2"/>
-                <constraint firstItem="NCw-NI-65p" firstAttribute="top" secondItem="yuh-rj-CUE" secondAttribute="top" constant="258" id="a83-ws-ctK"/>
-                <constraint firstItem="LIc-Bb-cDt" firstAttribute="leading" secondItem="yuh-rj-CUE" secondAttribute="leading" constant="26" id="avO-3c-Mex"/>
-                <constraint firstItem="LIc-Bb-cDt" firstAttribute="centerY" secondItem="mf7-0C-LtF" secondAttribute="centerY" id="bww-0Q-3Xt"/>
+                <constraint firstItem="NCw-NI-65p" firstAttribute="centerY" secondItem="fl6-bp-dQj" secondAttribute="centerY" id="eni-2Z-ybo"/>
                 <constraint firstItem="mf7-0C-LtF" firstAttribute="height" secondItem="fl6-bp-dQj" secondAttribute="height" id="fAX-Vz-fSA"/>
-                <constraint firstItem="LIc-Bb-cDt" firstAttribute="top" secondItem="yuh-rj-CUE" secondAttribute="top" constant="281" id="i9y-W4-Nb3"/>
                 <constraint firstItem="mf7-0C-LtF" firstAttribute="width" secondItem="fl6-bp-dQj" secondAttribute="width" id="maa-su-E8l"/>
                 <constraint firstItem="NCw-NI-65p" firstAttribute="leading" secondItem="yuh-rj-CUE" secondAttribute="leading" constant="14" id="oix-XY-hvr"/>
-                <constraint firstItem="LIc-Bb-cDt" firstAttribute="centerX" secondItem="mf7-0C-LtF" secondAttribute="centerX" id="r7I-0X-erx"/>
-                <constraint firstItem="NCw-NI-65p" firstAttribute="centerY" secondItem="LIc-Bb-cDt" secondAttribute="centerY" id="tl2-ms-h9Z"/>
             </constraints>
             <point key="canvasLocation" x="131" y="9"/>
         </view>
@@ -92,7 +97,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

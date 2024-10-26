@@ -73,8 +73,6 @@ class LoginViewController: UIViewController {
     @IBAction func onTappedLoginButton(_ sender: Any) {
         guard let username = emailField.text, let password = passwordField.text else { return }
         viewModel.login(username: username, password: password)
-        let heroesViewController = HeroesViewController()
-        navigationController?.pushViewController(heroesViewController, animated: true)
     }
 }
    

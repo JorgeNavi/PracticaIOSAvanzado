@@ -114,6 +114,7 @@ extension StoreDataProvider {
                 newLocation.hero = hero //nuestro newLocation.hero tiene el valor de ese registro
             }
         }
+        save()
     }
     
     //añadimos transformación
@@ -132,6 +133,7 @@ extension StoreDataProvider {
                 newTransformation.hero = hero //nuestro newTransformation.hero tiene el valor de ese registro
             }
         }
+        save()
     }
     
     func clearDDBB() {
