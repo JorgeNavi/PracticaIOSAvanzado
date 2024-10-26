@@ -32,9 +32,9 @@ final class LoginViewModel {
         onStateChanged.value = .loading
         useCase.login(username: username, password: password) { [weak self] result in
             switch result {
-            case .success():
+            case .success:
                 self?.onStateChanged.value = .success
-            case .failure(let error):
+            case .failure:
                 self?.onStateChanged.value = .error(reason: LoginError.unknownError.rawValue)
             }
         }

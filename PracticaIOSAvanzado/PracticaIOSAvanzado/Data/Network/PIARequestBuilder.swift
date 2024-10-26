@@ -50,18 +50,25 @@ class PIARequestBuilder {
             request?.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         if let params {
-            request?.httpBody = try? JSONSerialization.data(withJSONObject: params)
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: params)
+                        request?.httpBody = jsonData
+                    } catch {
+                        throw PIAApiError.parsingDataError
+                    }
+                }
+                
+                request?.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request?.setValue("application/json", forHTTPHeaderField: "Accept")
             }
-        request?.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        }
 
     
-    func buildRequest(endPoint: PIAEndPoint, params: [String: String]) throws(PIAApiError) -> URLRequest { //le pasamos el endPoint por parámetro para poder acceder a él
+    func buildRequest(endPoint: PIAEndPoint, params: [String: String], requiredAuthorization: Bool = true) throws(PIAApiError) -> URLRequest { //le pasamos el endPoint por parámetro para poder acceder a él
         do {
             let url = try self.url(endPoint: endPoint)
             request = URLRequest(url: url) //aquí se le asigna la URL completa de la request a request
             request?.httpMethod = endPoint.httpMethod() //Aqui se establece el metodo http (en este caso solo tenemos POST porque en nuestra API recuperar herores es POST
-            try setHeaders(params: params) //Le pasamos el header
+            try setHeaders(params: params, requiredAuthorization: requiredAuthorization) //Le pasamos el header
             if let finalRequest = self.request {
                 return finalRequest //Y se devuelve request
             }
@@ -71,20 +78,4 @@ class PIARequestBuilder {
         throw PIAApiError.URLMalFormed
     }
     
-    func buildLoginRequest(endPoint: PIAEndPoint = .login, username: String, password: String) throws(PIAApiError) -> URLRequest {
-        
-        let loginData = Data("\(username):\(password)".utf8)
-        let base64LoginString = loginData.base64EncodedString()
-        
-        do {
-            let url = try self.url(endPoint: endPoint)
-            var request = URLRequest(url: url)
-            request.httpMethod = endPoint.httpMethod() // O el método adecuado para tu API
-            request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            return request
-        } catch {
-            throw PIAApiError.URLMalFormed
-        }
-    }
 }

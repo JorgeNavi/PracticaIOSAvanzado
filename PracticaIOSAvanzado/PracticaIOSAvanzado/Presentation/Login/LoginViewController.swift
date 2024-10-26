@@ -3,6 +3,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginContainer: UIStackView!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -11,7 +12,7 @@ class LoginViewController: UIViewController {
     
     private var viewModel = LoginViewModel()
    
-    init(viewModel: LoginViewModel) {
+    init(viewModel: LoginViewModel = LoginViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: "LoginViewController", bundle: Bundle(for: type(of: self)))
     }
@@ -44,27 +45,32 @@ class LoginViewController: UIViewController {
             case .loading:
                 self.spinner.startAnimating()
                 self.loginContainer.isHidden = true
+                self.loginButton.isHidden = true
             case .success:
                 self.spinner.stopAnimating()
                 self.loginContainer.isHidden = true
+                self.loginButton.isHidden = true
                 let heroesViewController = HeroesViewController()
                 navigationController?.pushViewController(heroesViewController, animated: true)
             case .error(let reason):
                 self.loginContainer.isHidden = true
                 self.spinner.stopAnimating()
+                self.loginButton.isHidden = true
                 let alert = UIAlertController(title: "Login Error", message: reason, preferredStyle: .alert)
                 //añadimos al alert un botón "OK" para salir
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 //Se necesita el present para mostrar vistas modales
                 self.present(alert, animated: true)
-                self.viewModel.onStateChanged.value = .none
+                viewModel.onStateChanged.value = .none
             case .none:
+                self.spinner.stopAnimating()
                 self.loginContainer.isHidden = false
+                self.loginButton.isHidden = false
             }
         }
     }
     
-    @IBAction func goToHeroes(_ sender: Any) {
+    @IBAction func onTappedLoginButton(_ sender: Any) {
         guard let username = emailField.text, let password = passwordField.text else { return }
         viewModel.login(username: username, password: password)
         let heroesViewController = HeroesViewController()

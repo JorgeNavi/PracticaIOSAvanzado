@@ -12,7 +12,7 @@ enum statusDetailHero {
 
 class DetailHeroViewModel {
     
-    private let hero: Hero
+    private(set) var hero: Hero
     private var heroLocations: [Location] = []
     private var useCase: DetailHeroUseCaseProtocol
     var status: PIAObservable<statusDetailHero> = PIAObservable(.none)

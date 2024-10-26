@@ -14,6 +14,8 @@ protocol PIAApiProviderProtocol {
     func loadLocations(id: String, completion: @escaping (Result<[ApiLocation], PIAApiError>) -> Void)
     
     func loadTransformations(id: String, completion: @escaping (Result<[ApiTransformation], PIAApiError>) -> Void)
+    
+    func loginRequest(username: String, password: String, completion: @escaping ((Result<String, PIAApiError>) -> Void))
 }
 
 
@@ -45,20 +47,32 @@ class PIAApiProvider: PIAApiProviderProtocol {
             if statusCode != 200 { //Si statusCode no es igual a 200 (codigo de que todo ha ido OK):
                 completion(.failure(.apiError(statusCode: statusCode ?? -1))) //lanzamos un error controlado (personalizado) de la Api con el valor del statusCode o -1 por defecto
                 return //y return para que no se siga ejecutando código secuencialmente
-            }
-            if let data { //si se reciben datos:
+            } else {
+                guard let data else {
+                    completion(.failure(.dataError))
+                    return
+                }
+                if G.self == String.self {
+                    if let token = String(data: data, encoding: .utf8) {
+                        completion(.success(token as! G))
+                    } else {
+                        completion(.failure(.parsingDataError))
+                    }
+                    return
+                }
+                
                 do {
                     let apiResponse = try JSONDecoder().decode(G.self, from: data) //se instancia una constante respuesta en la que se decodifica el JSON de la API de data
                     completion(.success(apiResponse)) //asi que se lanza success
                 } catch {
                     completion(.failure(.parsingDataError)) //Se lanza error su falla el paso previo
                 }
-            } else { //si no se reciben datos:
-                completion(.failure(.dataError)) //se lanza otro error
             }
-            
-        } .resume() //IMPORTANTÍSIMO, SI NO SE INCLUYE ESTO NO SE LANZA LA PETICIÓN!!!
+        }.resume()
     }
+    
+    
+    //IMPORTANTÍSIMO, SI NO SE INCLUYE ESTO NO SE LANZA LA PETICIÓN!
     
     //MARK: Métodos de recuperar información de la API:
     
@@ -91,4 +105,22 @@ class PIAApiProvider: PIAApiProviderProtocol {
             completion(.failure(error)) //fallo personalizado de request
         }
     }
+    
+    func loginRequest(username: String, password: String, completion: @escaping ((Result<String, PIAApiError>) -> Void)) {
+        let loginString = "\(username):\(password)"
+        guard let loginData = loginString.data(using: .utf8) else {
+            completion(.failure(PIAApiError.invalidCredentials))
+            return
+        }
+        let base64LoginString = loginData.base64EncodedString()
+        
+        do {
+            var request = try requestBuilder.buildRequest(endPoint: .login, params: [:], requiredAuthorization: false)
+            request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+            makeRequest(request: request, completion: completion)
+        } catch {
+            completion(.failure(PIAApiError.apiError(statusCode: 400))) // Error en la construcción de la petición
+        }
+    }
 }
+

@@ -79,7 +79,7 @@ class HeroesViewController: UIViewController {
         //A UICollectionView.CellRegistration hay que pasarle una celda y el item que la trabaja/ocupa: <HeroCell, Hero>
         //se le pasa el identificador de la celda cellNib: UINib(nibName: HeroCell.identifier
         //y devuelve una celda, un indexPath y un item(hero):
-        let cellRegister = UICollectionView.CellRegistration<HeroCell, Hero>(cellNib: UINib(nibName:        HeroCell.identifier, bundle: nil)) { cell, indexPath, hero in
+        let cellRegister = UICollectionView.CellRegistration<HeroCell, Hero>(cellNib: UINib(nibName: HeroCell.identifier, bundle: nil)) { cell, indexPath, hero in
             cell.configurewith(hero: hero) //le pasamos el metodo de configracion de la celda
             }
         

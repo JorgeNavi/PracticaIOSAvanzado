@@ -30,6 +30,11 @@ class DetailHeroViewController: UIViewController {
         viewModel.loadData()
         checkLocationAuthorizationStatus()
     }
+    /*
+    private func configureNavigationBar() {
+        configureNavigationBar(tit)
+    }
+     */
     
     func setBiding() {
         viewModel.status.bind {[weak self] status in
