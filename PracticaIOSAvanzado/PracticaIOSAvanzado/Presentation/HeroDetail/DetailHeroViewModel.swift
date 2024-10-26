@@ -12,8 +12,9 @@ enum statusDetailHero {
 
 class DetailHeroViewModel {
     
-    private(set) var hero: Hero
+    private var hero: Hero
     private var heroLocations: [Location] = []
+    private var heroTransformations: [Transformation] = []
     private var useCase: DetailHeroUseCaseProtocol
     var status: PIAObservable<statusDetailHero> = PIAObservable(.none)
     
@@ -24,9 +25,19 @@ class DetailHeroViewModel {
         self.hero = hero
     }
     
+    func getHeroInfo() -> String? {
+        return hero.info
+    }
+    
+    func getHeroname() -> String? {
+        return hero.name
+    }
+    
     func loadData() {
         loadLocations()
+        loadTransformations()
     }
+    
     
     //recibimos las localizaciones:
     private func loadLocations() {
@@ -38,6 +49,17 @@ class DetailHeroViewModel {
             case .failure(let error):
                 self?.status.value = .error(reason: error.description)
             
+            }
+        }
+    }
+    
+    private func loadTransformations() {
+        useCase.loadTransformationsForHeroWith(id: hero.id) {[weak self] result in
+            switch result {
+            case .success(let transformations):
+                self?.heroTransformations = transformations
+            case .failure(let error):
+                self?.status.value = .error(reason: error.description)
             }
         }
     }

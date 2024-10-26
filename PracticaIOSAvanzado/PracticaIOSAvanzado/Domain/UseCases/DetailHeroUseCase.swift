@@ -6,6 +6,7 @@ import Foundation
 protocol DetailHeroUseCaseProtocol {
     
     func loadLocationsForHeroWith(id: String, completion: @escaping ((Result<[Location], PIAApiError>) -> Void))
+    func loadTransformationsForHeroWith(id: String, completion: @escaping ((Result<[Transformation], PIAApiError>) -> Void))
 }
 
 
@@ -45,6 +46,33 @@ class DetailHeroUseCase: DetailHeroUseCaseProtocol {
         } else { //si el heroe tiene localizaciones:
             let localLocations = dbLocations.map({Location(moLocation: $0)}) //se mapean las localizaciones de la BBDD al modelo de datos de la app (del Domain)
             completion(.success(localLocations))
+        }
+    }
+    //Necesitamos obtener el heroe de la BBDD
+    //Con el heroe comprobamos si tiene transformaciones
+    //si las tiene, las devolvemos
+    //Si no las tiene llamamos a la API, insertamos en BBDD y las devolvemos
+    func loadTransformationsForHeroWith(id: String, completion: @escaping ((Result<[Transformation], PIAApiError>) -> Void)) {
+        guard let hero = getHeroWith(id: id) else {
+            completion(.failure(.heroNotFound(idHero: id)))
+            return
+        }
+        let dbTransformations = hero.transformations ?? []
+        if dbTransformations.isEmpty {
+            apiProvider.loadTransformations(id: id) {[weak self] result in
+                switch result {
+                case .success(let transformations):
+                    self?.storeDataProvider.add(transformations: transformations)
+                    let dbTransformations = hero.transformations ?? []
+                    let localTransformations = dbTransformations.map({Transformation(moTransformation: $0)})
+                    completion(.success(localTransformations))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        } else {
+            let localTransformations = dbTransformations.map({Transformation(moTransformation: $0)})
+            completion(.success(localTransformations))
         }
     }
     

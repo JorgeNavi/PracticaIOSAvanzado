@@ -4,6 +4,9 @@ import MapKit
 
 class DetailHeroViewController: UIViewController {
     
+    @IBOutlet weak var infoHerotext: UITextView!
+    @IBOutlet weak var transformationsContainer: UICollectionView!
+    @IBOutlet weak var heroNameLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     private var viewModel: DetailHeroViewModel
     private var locationManager: CLLocationManager = CLLocationManager()
