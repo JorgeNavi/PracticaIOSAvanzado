@@ -110,7 +110,7 @@ final class ApiProviderTests: XCTestCase {
         let expectedTransformation = try DataMock.mockTransformations().first!
         var transformationsResponse = [ApiTransformation]()
         
-        // Configuración del handler para simular la respuesta de la API
+        // En el handler, validamos la request y configuramos la respuesta simulada.
         URLProtocolMock.handler = { request in
             // Validación de la request generada por la app
             let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/tranformations"))
@@ -118,7 +118,7 @@ final class ApiProviderTests: XCTestCase {
             XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
             XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(expectedToken)")
             
-            // Respuesta simulada con datos de transformaciones mock
+    
             let data = try DataMock.loadTransformationsData()
             let response = HTTPURLResponse(url: expectedUrl, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (data, response)
@@ -148,7 +148,7 @@ final class ApiProviderTests: XCTestCase {
         let expectedToken = "Token"
         var error: PIAApiError?
         
-        // Simulación de un error en la llamada a la API
+        // En el handler, validamos la request y configuramos la respuesta simulada.
         URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: -3)
         
         // When
@@ -175,7 +175,7 @@ final class ApiProviderTests: XCTestCase {
         let expectedLocation = try DataMock.mockLocations().first!
         var locationsResponse = [ApiLocation]()
         
-        // Configuración del handler para simular la respuesta de la API
+        // En el handler, validamos la request y configuramos la respuesta simulada.
         URLProtocolMock.handler = { request in
             // Validación de la request generada por la app
             let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/locations"))
@@ -213,7 +213,7 @@ final class ApiProviderTests: XCTestCase {
         let expectedToken = "Token"
         var error: PIAApiError?
         
-        // Simulación de un error en la llamada a la API
+        // En el handler, validamos la request y configuramos la respuesta simulada.
         URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: -2)
         
         // When
@@ -240,13 +240,12 @@ final class ApiProviderTests: XCTestCase {
         let password = "admin"
         let expectedToken = "Token"
         
-        // Configuración del handler para simular la respuesta de la API
+
         URLProtocolMock.handler = { request in
             let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/auth/login"))
             XCTAssertEqual(request.httpMethod, "POST")
             XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
             
-            // Respuesta simulada con un token JWT
             let data = expectedToken.data(using: .utf8)!
             let response = HTTPURLResponse(url: expectedUrl, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (data, response)
@@ -277,7 +276,7 @@ final class ApiProviderTests: XCTestCase {
         let password = "notAdmin"
         var error: PIAApiError?
         
-        // Simulación de un error de autenticación (401)
+
         URLProtocolMock.handler = { request in
             let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/login"))
             let response = HTTPURLResponse(url: expectedUrl, statusCode: 401, httpVersion: nil, headerFields: nil)!

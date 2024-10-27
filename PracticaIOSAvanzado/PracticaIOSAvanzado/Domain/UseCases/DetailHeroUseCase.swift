@@ -64,14 +64,14 @@ class DetailHeroUseCase: DetailHeroUseCaseProtocol {
                 case .success(let transformations):
                     self?.storeDataProvider.add(transformations: transformations)
                     let dbTransformations = hero.transformations ?? []
-                    let localTransformations = dbTransformations.map({Transformation(moTransformation: $0)})
+                    let localTransformations = dbTransformations.map({Transformation(moTransformation: $0)}).sorted(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending }) //ordenamos las transformaciones
                     completion(.success(localTransformations))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
         } else {
-            let localTransformations = dbTransformations.map({Transformation(moTransformation: $0)})
+            let localTransformations = dbTransformations.map({Transformation(moTransformation: $0)}).sorted(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending }) //ordenamos las transformaciones
             completion(.success(localTransformations))
         }
     }

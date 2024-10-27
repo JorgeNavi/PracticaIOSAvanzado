@@ -15,6 +15,8 @@
 		FC4AC22A2CCD5ED000366218 /* Transformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4AC2292CCD5EC700366218 /* Transformation.swift */; };
 		FC51511B2CCE9E7A00FC337E /* Transformations.json in Resources */ = {isa = PBXBuildFile; fileRef = FC51511A2CCE9E6C00FC337E /* Transformations.json */; };
 		FC51511D2CCE9F4100FC337E /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = FC51511C2CCE9F3200FC337E /* Locations.json */; };
+		FC5151232CCEB15200FC337E /* LoginUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5151222CCEB14B00FC337E /* LoginUseCaseTest.swift */; };
+		FC5151252CCEB16800FC337E /* DetailHeroUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5151242CCEB15F00FC337E /* DetailHeroUseCaseTests.swift */; };
 		FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */; };
 		FC5FB56D2CC1135700E5DC5B /* PIAEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */; };
 		FC5FB56F2CC1139200E5DC5B /* PIARequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */; };
@@ -89,6 +91,8 @@
 		FC4AC2292CCD5EC700366218 /* Transformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformation.swift; sourceTree = "<group>"; };
 		FC51511A2CCE9E6C00FC337E /* Transformations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Transformations.json; sourceTree = "<group>"; };
 		FC51511C2CCE9F3200FC337E /* Locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
+		FC5151222CCEB14B00FC337E /* LoginUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseTest.swift; sourceTree = "<group>"; };
+		FC5151242CCEB15F00FC337E /* DetailHeroUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroUseCaseTests.swift; sourceTree = "<group>"; };
 		FC5FB5682CC1131F00E5DC5B /* PIAApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiError.swift; sourceTree = "<group>"; };
 		FC5FB56B2CC1135600E5DC5B /* PIAEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAEndPoint.swift; sourceTree = "<group>"; };
 		FC5FB56E2CC1138F00E5DC5B /* PIARequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIARequestBuilder.swift; sourceTree = "<group>"; };
@@ -311,7 +315,9 @@
 		FC6744472CCAB6BF005B7064 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				FC5151242CCEB15F00FC337E /* DetailHeroUseCaseTests.swift */,
 				FC6744492CCAB6F4005B7064 /* HeroUseCaseTest.swift */,
+				FC5151222CCEB14B00FC337E /* LoginUseCaseTest.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -630,11 +636,13 @@
 			files = (
 				FC7807D22CC25CC600A53245 /* StoreProviderTests.swift in Sources */,
 				FC67443F2CCAAD26005B7064 /* URLProtocolMock.swift in Sources */,
+				FC5151252CCEB16800FC337E /* DetailHeroUseCaseTests.swift in Sources */,
 				FC6744412CCAB044005B7064 /* SecureDataStorageMock.swift in Sources */,
 				FC67444C2CCAB75A005B7064 /* PIAApiProviderMock.swift in Sources */,
 				FC67444A2CCAB6FD005B7064 /* HeroUseCaseTest.swift in Sources */,
 				FC67443A2CCAABA5005B7064 /* ApiProviderTests.swift in Sources */,
 				FC67444E2CCAB9D7005B7064 /* HeroesViewModelTest.swift in Sources */,
+				FC5151232CCEB15200FC337E /* LoginUseCaseTest.swift in Sources */,
 				FC6744432CCAB052005B7064 /* DataMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

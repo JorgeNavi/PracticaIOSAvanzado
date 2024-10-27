@@ -70,6 +70,7 @@ class HeroesViewController: UIViewController {
         }
     }
     
+    
     //establecemos un método para configurar la celda en la que se verán los heroes:
     func configureCollectionView() {
         //le informamos de que nuestro delegado que es quien en la extensión va a ser llamado para la configuración de la celda
