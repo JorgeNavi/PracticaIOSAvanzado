@@ -42,25 +42,22 @@ class DetailHeroViewController: UIViewController {
         viewModel.loadData() //carga los datos
         checkLocationAuthorizationStatus()
     }
-    /*
-    private func configureNavigationBar() {
-        configureNavigationBar(tit)
-    }
-     */
+
     
     func setBiding() {
         viewModel.status.bind {[weak self] status in
             switch status {
-            case .dataUpdated:
+            case .locationsUpdated:
                 self?.updateMapAnnotations() //se muestran las anotaciones en el mapa
                 self?.spinner.isHidden = true
+                self?.heroNameLabel.text = self?.viewModel.getHeroname()
+                self?.infoHerotext.text = self?.viewModel.getHeroInfo()
+                //actualizamos el listado de heroes
+            case .transformationsUpdated:
                 var snapshot = NSDiffableDataSourceSnapshot<SectionTransformation, Transformation>()
                 snapshot.appendSections([.main])
                 snapshot.appendItems(self?.viewModel.getheroTransformations() ?? [], toSection: .main)
                 self?.dataSource?.apply(snapshot)
-                self?.heroNameLabel.text = self?.viewModel.getHeroname()
-                self?.infoHerotext.text = self?.viewModel.getHeroInfo()
-                //actualizamos el listado de heroes
             case .error(reason: let reason):
                 //informamos error
                 //Si creamos un alert en el viewController se muestra una alerta de error:

@@ -2,18 +2,11 @@
 
 import Foundation
 
-enum StatusTranformations {
-    case loading
-    case none
-    case success
-    case failure(reason: String)
-}
 
 
 final class DetailTransformationViewModel {
     
     private var transformation: Transformation
-    var onStateChanged: PIAObservable<StatusTranformations> = PIAObservable(.none)
     
     init(transformation: Transformation) {
         self.transformation = transformation

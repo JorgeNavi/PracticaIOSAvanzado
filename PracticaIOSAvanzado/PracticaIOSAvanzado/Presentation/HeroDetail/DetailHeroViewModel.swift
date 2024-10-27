@@ -4,7 +4,8 @@ import MapKit
 
 enum statusDetailHero {
     
-    case dataUpdated
+    case locationsUpdated
+    case transformationsUpdated
     case error(reason: String)
     case loading
     case none
@@ -69,6 +70,7 @@ class DetailHeroViewModel {
             switch result {
             case .success(let transformations):
                 self?.heroTransformations = transformations
+                self?.status.value = .transformationsUpdated
             case .failure(let error):
                 self?.status.value = .error(reason: error.description)
             }
@@ -85,6 +87,6 @@ class DetailHeroViewModel {
             let annotation = HeroAnnotation(title: self?.hero.name, coordinate: coordinate)
             self?.annotations.append(annotation)
         }
-        self.status.value = .dataUpdated
+        self.status.value = .locationsUpdated
     }
 }

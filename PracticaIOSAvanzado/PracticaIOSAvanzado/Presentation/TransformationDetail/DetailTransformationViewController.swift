@@ -28,33 +28,16 @@ class DetailTransformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBiding()
+        configureUI()
     
     }
     
-    func setBiding() {
-        viewModel.onStateChanged.bind {[weak self] state in
-            switch state {
-            case .loading:
-                self?.spinner.startAnimating()
-            case .success:
-                self?.spinner.stopAnimating()
-                self?.transformationName.text = self?.viewModel.getTransformationName()
-                self?.transformationInfo.text = self?.viewModel.getTransformationInfo()
-                let options = KingfisherOptionsInfo([.transition(.fade(0.3)), .forceTransition])
-                self?.transformationImage.kf.setImage(with: URL(string: self?.viewModel.getTransformationImage() ?? ""), options: options)//self?.transformationImage.image = self?.viewModel.getTransformationImage()
-            case .failure(reason: let reason):
-                let alert = UIAlertController(title: "Detail Transformation View Error", message: reason, preferredStyle: .alert)
-                //añadimos al alert un botón "OK" para salir
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self?.present(alert, animated: true)
-            case .none:
-                break
-                
-            }
-        }
+    func configureUI() {
+        self.spinner.stopAnimating()
+        self.transformationName.text = self.viewModel.getTransformationName()
+        self.transformationInfo.text = self.viewModel.getTransformationInfo()
+        let options = KingfisherOptionsInfo([.transition(.fade(0.3)), .forceTransition])
+        self.transformationImage.kf.setImage(with: URL(string: self.viewModel.getTransformationImage()), options: options)
+
     }
-
-
-
 }
