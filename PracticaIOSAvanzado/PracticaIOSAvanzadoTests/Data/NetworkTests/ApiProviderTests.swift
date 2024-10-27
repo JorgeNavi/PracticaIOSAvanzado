@@ -81,7 +81,7 @@ final class ApiProviderTests: XCTestCase {
     
     func test_loadHerosError_shouldReturn_Error() throws {
         // Configuración de las condiciones de error para la prueba.
-        let expectedToken = "Some Token"
+        let expectedToken = "Token"
         var error: PIAApiError?
         URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: 503)
         
@@ -102,6 +102,147 @@ final class ApiProviderTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
         let receivedError = try XCTUnwrap(error)
         XCTAssertEqual(receivedError.description, "Server error: \(503)")
+    }
+    
+    func test_loadTransformations_shouldReturn_Transformations() throws {
+        // Given
+        let expectedToken = "Token"
+        let expectedTransformation = try DataMock.mockTransformations().first!
+        var transformationsResponse = [ApiTransformation]()
+        
+        // Configuración del handler para simular la respuesta de la API
+        URLProtocolMock.handler = { request in
+            // Validación de la request generada por la app
+            let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/tranformations"))
+            XCTAssertEqual(request.httpMethod, "POST")
+            XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(expectedToken)")
+            
+            // Respuesta simulada con datos de transformaciones mock
+            let data = try DataMock.loadTransformationsData()
+            let response = HTTPURLResponse(url: expectedUrl, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (data, response)
+        }
+        
+        // When
+        let expectation = expectation(description: "Load Transformations")
+        setToken(expectedToken)
+        sut.loadTransformations(id: "1") { result in
+            switch result {
+            case .success(let transformations):
+                transformationsResponse = transformations
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail("Error: \(error.localizedDescription)")
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(transformationsResponse.count, 15)
+        XCTAssertEqual(transformationsResponse.first?.id, expectedTransformation.id)
+    }
+    
+    func test_loadTransformationsError_shouldReturn_Error() throws {
+        // Given
+        let expectedToken = "Token"
+        var error: PIAApiError?
+        
+        // Simulación de un error en la llamada a la API
+        URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: -3)
+        
+        // When
+        let expectation = expectation(description: "Load Transformations Error")
+        setToken(expectedToken)
+        sut.loadTransformations(id: "1") { result in
+            switch result {
+            case .success(_):
+                XCTFail("Error expected")
+            case .failure(let receivedError):
+                error = receivedError
+                expectation.fulfill()
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(error?.description, "Server error: \(-3)")
+    }
+    
+    func test_loadLocations_shouldReturn_Locations() throws {
+        // Given
+        let expectedToken = "Token"
+        let expectedLocation = try DataMock.mockLocations().first!
+        var locationsResponse = [ApiLocation]()
+        
+        // Configuración del handler para simular la respuesta de la API
+        URLProtocolMock.handler = { request in
+            // Validación de la request generada por la app
+            let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/locations"))
+            XCTAssertEqual(request.httpMethod, "POST")
+            XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(expectedToken)")
+            
+            // Respuesta simulada con datos de ubicaciones mock
+            let data = try DataMock.loadLocationsData()
+            let response = HTTPURLResponse(url: expectedUrl, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (data, response)
+        }
+        
+        // When
+        let expectation = expectation(description: "Load Locations")
+        setToken(expectedToken)
+        sut.loadLocations(id: "1") { result in
+            switch result {
+            case .success(let locations):
+                locationsResponse = locations
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail("Error: \(error.localizedDescription)")
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(locationsResponse.count, 2)
+        XCTAssertEqual(locationsResponse.first?.id, expectedLocation.id)
+    }
+    
+    func test_login() throws {
+        // Given
+        let username = "admin"
+        let password = "admin"
+        let expectedToken = "Token"
+        
+        // Configuración del handler para simular la respuesta de la API
+        URLProtocolMock.handler = { request in
+            let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/auth/login"))
+            XCTAssertEqual(request.httpMethod, "POST")
+            XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
+            
+            // Respuesta simulada con un token JWT
+            let data = expectedToken.data(using: .utf8)!
+            let response = HTTPURLResponse(url: expectedUrl, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (data, response)
+        }
+        
+        // When
+        let expectation = expectation(description: "Login")
+        var loginResponse: String?
+        
+        sut.loginRequest(username: username, password: password) { result in
+            switch result {
+            case .success(let token):
+                loginResponse = token
+                expectation.fulfill()
+            case .failure(_):
+                XCTFail("Success expected")
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(loginResponse, expectedToken)
     }
     
     // Función auxiliar para establecer el token en el almacenamiento seguro simulado.

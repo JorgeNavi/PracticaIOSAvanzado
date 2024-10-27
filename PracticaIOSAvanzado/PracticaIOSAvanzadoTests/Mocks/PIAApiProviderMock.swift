@@ -16,16 +16,32 @@ class PIAApiProviderMock: PIAApiProviderProtocol {
     
     // Simula la carga de ubicaciones asociadas a un héroe desde una API y siempre devuelve éxito.
     func loadLocations(id: String, completion: @escaping ((Result<[ApiLocation], PIAApiError>) -> Void)) {
-        // Crea un array de ubicaciones mockeado.
-        let locations = [ApiLocation(id: "id", date: "date", latitude: "latitud", longitude: "0000", hero: nil)]
-        completion(.success(locations))  // Devuelve las ubicaciones mockeadas.
+        
+        do {
+            let locations = try DataMock.mockLocations()
+            completion(.success(locations))
+        } catch {
+            completion(.failure(PIAApiError.dataError))
+        }
     }
     
     // Simula la carga de transformaciones de un héroe desde una API y siempre devuelve éxito.
     func loadTransformations(id: String, completion: @escaping ((Result<[ApiTransformation], PIAApiError>) -> Void)) {
-        // Crea un array de transformaciones mockeado.
-        let transformations = [ApiTransformation(id: "id", name: "name", photo: "photo", info: "desc", hero: nil)]
-        completion(.success(transformations))  // Devuelve las transformaciones mockeadas.
+        
+        do {
+            let transformations = try DataMock.mockTransformations()
+            completion(.success(transformations))
+        } catch {
+            completion(.failure(PIAApiError.dataError))
+        }
+    }
+    
+    func loginRequest(username: String, password: String, completion: @escaping ((Result<String, PIAApiError>) -> Void)) {
+        if username == "admin" && password == "admin" {
+            completion(.success("token"))
+        } else {
+            completion(.failure(PIAApiError.invalidCredentials))
+        }
     }
 }
 
@@ -45,5 +61,9 @@ class ApiProviderErrorMock: PIAApiProviderProtocol {
     // Simula la carga de transformaciones y siempre devuelve un error.
     func loadTransformations(id: String, completion: @escaping ((Result<[ApiTransformation], PIAApiError>) -> Void)) {
         completion(.failure(PIAApiError.dataError))  // Devuelve un error simulado.
+    }
+    
+    func loginRequest(username: String, password: String, completion: @escaping ((Result<String, PIAApiError>) -> Void)) {
+        completion(.failure(PIAApiError.invalidCredentials))
     }
 }

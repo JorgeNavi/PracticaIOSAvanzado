@@ -160,7 +160,5 @@ extension DetailHeroViewController: MKMapViewDelegate, UICollectionViewDelegateF
         present(detailTransVC, animated: true, completion: nil) //self.show decide como moestrar la pantalla sin necesidad del navigationController
         //navigationController?.pushViewController(detailHeroVC, animated: true)
     }
-     
-    
-    
+
 }
