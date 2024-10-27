@@ -9,7 +9,7 @@ class LoginUseCase: LoginUseCaseProtocol {
     private let apiProvider: PIAApiProvider
     private let secureStorage: SecureDataStoreProtocol
     
-    init(apiProvider: PIAApiProvider = PIAApiProvider(), secureStorage: SecureDataStoreProtocol = SecureDataStore()) {
+    init(apiProvider: PIAApiProvider = PIAApiProvider(), secureStorage: SecureDataStoreProtocol = SecureDataStore.shared) {
         self.apiProvider = apiProvider
         self.secureStorage = secureStorage
     }
