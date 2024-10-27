@@ -156,7 +156,7 @@ extension DetailHeroViewController: MKMapViewDelegate, UICollectionViewDelegateF
         debugPrint("calloutAccessoryControlTapped")
     }
     
-    
+    //establecemos el tamaño de la celda
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: collectionView.bounds.size.width, height: 200)
@@ -164,13 +164,12 @@ extension DetailHeroViewController: MKMapViewDelegate, UICollectionViewDelegateF
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selectedTransformation = viewModel.getTransfromationAt(index: indexPath.row) else { //funcion que nos devolvia un heroe para la celda. Es decir, si hay celda_
+        guard let selectedTransformation = viewModel.getTransfromationAt(index: indexPath.row) else { //funcion que nos devolvia un heroe para la celda. Es decir, si hay celda
             return
         }
         let viewModel = DetailTransformationViewModel(transformation: selectedTransformation)
         let detailTransVC = DetailTransformationViewController(viewModel: viewModel)
-        present(detailTransVC, animated: true, completion: nil) //self.show decide como moestrar la pantalla sin necesidad del navigationController
-        //navigationController?.pushViewController(detailHeroVC, animated: true)
+        present(detailTransVC, animated: true, completion: nil)
     }
 
 }

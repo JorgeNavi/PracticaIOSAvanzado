@@ -12,6 +12,8 @@ final class DetailTransformationViewModel {
         self.transformation = transformation
     }
     
+    //establecemos los métodos para extraer la informacion de la transfromación
+    
     func getTransformationName() -> String {
         return transformation.name
     }

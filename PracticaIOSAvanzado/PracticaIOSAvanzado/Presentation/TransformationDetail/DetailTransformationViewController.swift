@@ -32,6 +32,7 @@ class DetailTransformationViewController: UIViewController {
     
     }
     
+    //metodo que va a mostrar la informacion que se va a visualizar en el didLoad
     func configureUI() {
         self.spinner.stopAnimating()
         self.transformationName.text = self.viewModel.getTransformationName()

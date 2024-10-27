@@ -24,6 +24,7 @@ final class LoginViewModel {
         self.useCase = useCase
     }
     
+    //Función de Login en el que se maneja el valor de los estados dependiendo de si se hace de manera existosa o no
     func login(username: String, password: String) {
         if username.isEmpty, password.isEmpty {
             onStateChanged.value = .error(reason: LoginError.emptyCredentials.rawValue)
