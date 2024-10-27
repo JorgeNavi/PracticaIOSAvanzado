@@ -40,7 +40,6 @@ final class ApiProviderTests: XCTestCase {
         let expectedHero = try DataMock.mockHeroes().first!
         var heroesResponse = [ApiHero]()
         URLProtocolMock.handler = { request in
-            // En el handler, validamos la request y configuramos la respuesta simulada.
             let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/all"))
             
             XCTAssertEqual(request.httpMethod, "POST")
@@ -54,7 +53,6 @@ final class ApiProviderTests: XCTestCase {
            return  (data, response)
         }
         
-        // Ejecución del método de la API y evaluación de resultados.
         let expectation = expectation(description: "Load Heroes")
         setToken(expectedToken)
         sut.loadHeroes { result in
@@ -67,7 +65,6 @@ final class ApiProviderTests: XCTestCase {
             }
         }
         
-        // Validación de los datos recibidos.
         wait(for: [expectation], timeout: 1)
         XCTAssertEqual(heroesResponse.count, 15)
         let heroReceived = heroesResponse.first
@@ -80,12 +77,11 @@ final class ApiProviderTests: XCTestCase {
     }
     
     func test_loadHerosError_shouldReturn_Error() throws {
-        // Configuración de las condiciones de error para la prueba.
+
         let expectedToken = "Token"
         var error: PIAApiError?
         URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: 503)
-        
-        // Ejecución del método de la API esperando un error.
+
         let expectation = expectation(description: "Load Heroes Error")
         setToken(expectedToken)
         sut.loadHeroes { result in
@@ -98,7 +94,6 @@ final class ApiProviderTests: XCTestCase {
             }
         }
 
-        // Validación del error recibido.
         wait(for: [expectation], timeout: 2)
         let receivedError = try XCTUnwrap(error)
         XCTAssertEqual(receivedError.description, "Server error: \(503)")
@@ -110,9 +105,7 @@ final class ApiProviderTests: XCTestCase {
         let expectedTransformation = try DataMock.mockTransformations().first!
         var transformationsResponse = [ApiTransformation]()
         
-        // En el handler, validamos la request y configuramos la respuesta simulada.
         URLProtocolMock.handler = { request in
-            // Validación de la request generada por la app
             let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/tranformations"))
             XCTAssertEqual(request.httpMethod, "POST")
             XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
