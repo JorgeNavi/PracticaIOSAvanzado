@@ -11,6 +11,7 @@ enum StatusLogin: Equatable {
 enum LoginError: String {
     case emptyCredentials = "please be sure to enter username and password"
     case unknownError = "unknown error"
+    case invalidCredentials = "invalid username or password"
 }
 
 
@@ -35,7 +36,7 @@ final class LoginViewModel {
             case .success:
                 self?.onStateChanged.value = .success
             case .failure:
-                self?.onStateChanged.value = .error(reason: LoginError.unknownError.rawValue)
+                self?.onStateChanged.value = .error(reason: LoginError.invalidCredentials.rawValue)
             }
         }
     }

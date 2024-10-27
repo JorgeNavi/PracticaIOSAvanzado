@@ -175,11 +175,11 @@
 		FC5FB5542CC0F40300E5DC5B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FC624B122CCE5BCD002C9D8E /* TransformationDetail */,
 				FC5FB5572CC0F41A00E5DC5B /* Splash */,
 				FC5FB5562CC0F41300E5DC5B /* Login */,
 				FC5FB5712CC113F300E5DC5B /* Heroes */,
 				FCD8DC8F2CCA2F7100FF71E2 /* HeroDetail */,
+				FC624B122CCE5BCD002C9D8E /* TransformationDetail */,
 				FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */,
 			);
 			path = Presentation;

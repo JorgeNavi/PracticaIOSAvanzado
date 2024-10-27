@@ -85,7 +85,7 @@ class DetailHeroViewController: UIViewController {
         let cellRegister = UICollectionView.CellRegistration<HeroCell, Transformation>(cellNib: UINib(nibName: HeroCell.identifier, bundle: nil)) { cell, indexPath, transformation in
             cell.lbHeroName.text = transformation.name
             let options = KingfisherOptionsInfo([.transition(.fade(0.3)), .forceTransition])
-            cell.heroImage.kf.setImage(with: URL(string: transformation.photo), options: options) //Con kingFisher a raves de la url del atributo photo del heroe se establece una imagen y se configuran unas opciones de animación
+            cell.heroImage.kf.setImage(with: URL(string: transformation.photo), options: options) //Con kingFisher atraves de la url del atributo photo del heroe se establece una imagen y se configuran unas opciones de animación
             
         }
         //el UICollectionViewDiffableDataSource añade la celda de arriba en el collectionView y la celda que quiere usar
