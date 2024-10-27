@@ -28,6 +28,6 @@ final class DetailTransformationViewModel {
     }
     
     func getTransformationImage() -> String {
-        return transformation.photo
+            return transformation.photo
     }
 }

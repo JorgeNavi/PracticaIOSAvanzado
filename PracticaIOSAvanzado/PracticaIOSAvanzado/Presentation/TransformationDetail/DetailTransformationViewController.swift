@@ -41,9 +41,10 @@ class DetailTransformationViewController: UIViewController {
                 self?.spinner.stopAnimating()
                 self?.transformationName.text = self?.viewModel.getTransformationName()
                 self?.transformationInfo.text = self?.viewModel.getTransformationInfo()
-                self?.transformationImage.image = self?.viewModel.getTransformationImage()
+                let options = KingfisherOptionsInfo([.transition(.fade(0.3)), .forceTransition])
+                self?.transformationImage.kf.setImage(with: URL(string: self?.viewModel.getTransformationImage() ?? ""), options: options)//self?.transformationImage.image = self?.viewModel.getTransformationImage()
             case .failure(reason: let reason):
-                let alert = UIAlertController(title: "Detail Transformatio View Error", reason: reason, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Detail Transformation View Error", message: reason, preferredStyle: .alert)
                 //añadimos al alert un botón "OK" para salir
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self?.present(alert, animated: true)
