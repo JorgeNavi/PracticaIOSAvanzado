@@ -193,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5FB57C2CC116B400E5DC5B /* Model */,
+				FC5FB5762CC115AE00E5DC5B /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -394,7 +395,6 @@
 				FC6744472CCAB6BF005B7064 /* Domain */,
 				FC6744462CCAB6B6005B7064 /* Data */,
 				FC67443B2CCAACD1005B7064 /* Mocks */,
-				FC5FB5762CC115AE00E5DC5B /* UseCases */,
 			);
 			path = PracticaIOSAvanzadoTests;
 			sourceTree = "<group>";

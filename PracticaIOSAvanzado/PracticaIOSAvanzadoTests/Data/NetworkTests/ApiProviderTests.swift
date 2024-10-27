@@ -208,6 +208,32 @@ final class ApiProviderTests: XCTestCase {
         XCTAssertEqual(locationsResponse.first?.id, expectedLocation.id)
     }
     
+    func test_loadLocationsError_shouldReturn_Error() throws {
+        // Given
+        let expectedToken = "Token"
+        var error: PIAApiError?
+        
+        // Simulación de un error en la llamada a la API
+        URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: -2)
+        
+        // When
+        let expectation = expectation(description: "Load Locations Error")
+        setToken(expectedToken)
+        sut.loadLocations(id: "1") { result in
+            switch result {
+            case .success(_):
+                XCTFail("Error expected")
+            case .failure(let receivedError):
+                error = receivedError
+                expectation.fulfill()
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(error?.description, "Server error: \(-2)")
+    }
+    
     func test_login() throws {
         // Given
         let username = "admin"
@@ -243,6 +269,37 @@ final class ApiProviderTests: XCTestCase {
         // Then
         wait(for: [expectation], timeout: 1)
         XCTAssertEqual(loginResponse, expectedToken)
+    }
+    
+    func test_login_error() throws {
+        // Given
+        let username = "notAdmin"
+        let password = "notAdmin"
+        var error: PIAApiError?
+        
+        // Simulación de un error de autenticación (401)
+        URLProtocolMock.handler = { request in
+            let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/login"))
+            let response = HTTPURLResponse(url: expectedUrl, statusCode: 401, httpVersion: nil, headerFields: nil)!
+            return (Data(), response)
+        }
+        
+        // When
+        let expectation = expectation(description: "Login Failure")
+        
+        sut.loginRequest(username: username, password: password) { result in
+            switch result {
+            case .success(_):
+                XCTFail("Failure expected")
+            case .failure(let receivedError):
+                error = receivedError
+                expectation.fulfill()
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(error?.description, "API error: \(401)")
     }
     
     // Función auxiliar para establecer el token en el almacenamiento seguro simulado.

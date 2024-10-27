@@ -101,4 +101,26 @@ final class StoreProviderTests: XCTestCase {
         XCTAssertEqual(location.longitude, apiLocation.longitude)
         XCTAssertEqual(location.hero?.id, apiHero.id) //se comprueba aquí la relación entre heroe y location
     }
+    
+    func test_addTransformation_ShouldInsertTransformation_andAssociateHero() throws {
+        //Given
+        let apiHero = ApiHero(id: "123", name: "Piña", info: "piña no es un coco", photo: "Foto", favorite: false)
+        let apiTransformation = ApiTransformation(id: "1", name: "transformation", photo: "foto", info: "info", hero: apiHero)
+        
+        //When
+        sut.add(heroes:[apiHero]) //se añade un heroe a la BBDD
+        sut.add(transformations: [apiTransformation]) //se añade una transformación a la BBDD
+        let heroes = sut.fetchHeroes(filter: nil) //se hace una request de heroes
+        let heroe = try XCTUnwrap(heroes.first) //se desempaqueta el primer heroe
+        
+        //Then
+        XCTAssertEqual(heroe.transformations?.count, 1) //el contador de transformaciones de heroe debe ser 1
+        let transformation = try XCTUnwrap(heroe.transformations?.first) //se desempaqueta la transformación
+        //se comprueba que los atributos de la transformación de la BBDD correspondan con los recibidos de la API
+        XCTAssertEqual(transformation.id, apiTransformation.id)
+        XCTAssertEqual(transformation.name, apiTransformation.name)
+        XCTAssertEqual(transformation.photo, apiTransformation.photo)
+        XCTAssertEqual(transformation.info, apiTransformation.info)
+        XCTAssertEqual(transformation.hero?.id, apiHero.id) //se comprueba aquí la relación entre heroe y transformation
+    }
 }

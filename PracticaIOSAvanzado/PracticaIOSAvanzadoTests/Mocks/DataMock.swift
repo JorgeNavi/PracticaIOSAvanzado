@@ -22,7 +22,7 @@ class DataMock {
     
     static func loadLocationsData() throws -> Data {
         let bundle = Bundle(for: DataMock.self)
-        guard let url = bundle.url(forResource: "Localizations", withExtension: "json"),
+        guard let url = bundle.url(forResource: "Locations", withExtension: "json"),
               let data = try? Data.init(contentsOf: url)  else {
             throw NSError(domain: "io.keepcoding.PracticaIOSAvanzado", code: -2)
         }
