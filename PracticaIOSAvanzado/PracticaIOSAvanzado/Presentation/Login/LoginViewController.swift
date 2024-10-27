@@ -43,15 +43,9 @@ class LoginViewController: UIViewController {
             
             switch state {
             case .loading:
-                self.spinner.startAnimating()
-                self.loginContainer.isHidden = true
-                self.loginButton.isHidden = true
+                self.statusLoading()
             case .success:
-                self.spinner.stopAnimating()
-                self.loginContainer.isHidden = true
-                self.loginButton.isHidden = true
-                let heroesViewController = HeroesViewController()
-                navigationController?.pushViewController(heroesViewController, animated: true)
+                self.statusSuccess()
             case .error(let reason):
                 self.loginContainer.isHidden = true
                 self.spinner.stopAnimating()
@@ -69,6 +63,21 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    private func statusLoading() {
+        self.spinner.startAnimating()
+        self.loginContainer.isHidden = true
+        self.loginButton.isHidden = true
+    }
+    
+    private func statusSuccess() {
+        self.spinner.stopAnimating()
+        self.loginContainer.isHidden = true
+        self.loginButton.isHidden = true
+        let heroesViewController = HeroesViewController()
+        navigationController?.pushViewController(heroesViewController, animated: true)
+    }
+    
     
     @IBAction func onTappedLoginButton(_ sender: Any) {
         guard let username = emailField.text, let password = passwordField.text else { return }
