@@ -38,6 +38,7 @@ final class LoginUseCaseTest: XCTestCase {
         sut.login(username: username, password: password) { result in
             switch result {
             case .success:
+                XCTAssertNotNil(self.secureDataStore.getToken()) //vemos que se ha guardado el token
                 expectated.fulfill()
             case .failure:
                 XCTFail("Login failed")

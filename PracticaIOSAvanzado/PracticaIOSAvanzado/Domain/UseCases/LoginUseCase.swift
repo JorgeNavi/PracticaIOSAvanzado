@@ -14,6 +14,7 @@ class LoginUseCase: LoginUseCaseProtocol {
         self.secureStorage = secureStorage
     }
     
+    //se establece el metodode hacer login llamando al loginRequest
     func login(username: String, password: String, completion: @escaping (Result<Void, PIAApiError>) -> Void) {
         guard !username.isEmpty, !password.isEmpty else {
             completion(.failure(.invalidCredentials))

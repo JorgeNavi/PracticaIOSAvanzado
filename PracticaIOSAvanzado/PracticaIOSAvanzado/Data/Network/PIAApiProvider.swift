@@ -106,6 +106,7 @@ class PIAApiProvider: PIAApiProviderProtocol {
         }
     }
     
+    //metodo de peticion de login para la Api
     func loginRequest(username: String, password: String, completion: @escaping ((Result<String, PIAApiError>) -> Void)) {
         let loginString = "\(username):\(password)"
         guard let loginData = loginString.data(using: .utf8) else {
