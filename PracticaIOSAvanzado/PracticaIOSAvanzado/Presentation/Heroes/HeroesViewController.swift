@@ -51,25 +51,30 @@ class HeroesViewController: UIViewController {
         viewModel.statusHeroes.bind { [weak self] status in
             switch status { //En función del status del viewModel:
             case .dataUpdated: //si ha actualizado los datos:
-                var snapshot = NSDiffableDataSourceSnapshot<SectionHeroes, Hero>()
-                snapshot.appendSections([.main])
-                snapshot.appendItems(self?.viewModel.heroes ?? [], toSection: .main)
-                self?.dataSource?.apply(snapshot)
+                self?.statusDataUpdated()
                 //actualizamos el listado de heroes
             case .error(reason: let reason):
-                //informamos error
-                //Si creamos un alert en el viewController se muestra una alerta de error:
-                let alert = UIAlertController(title: "Heroes Table", message: reason, preferredStyle: .alert)
-                //añadimos al alert un botón "OK" para salir
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                //Se necesita el present para mostrar vistas modales
-                self?.present(alert, animated: true)
+                self?.statusError(reason: reason)
             case .none:
                 break
             }
         }
     }
     
+    private func statusDataUpdated() {
+        var snapshot = NSDiffableDataSourceSnapshot<SectionHeroes, Hero>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(viewModel.heroes, toSection: .main)
+        dataSource?.apply(snapshot)
+    }
+    
+    private func statusError(reason: String) {
+        let alert = UIAlertController(title: "Heroes Table", message: reason, preferredStyle: .alert)
+        //añadimos al alert un botón "OK" para salir
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        //Se necesita el present para mostrar vistas modales
+        alert.present(alert, animated: true)
+    }
     
     //establecemos un método para configurar la celda en la que se verán los heroes:
     func configureCollectionView() {
