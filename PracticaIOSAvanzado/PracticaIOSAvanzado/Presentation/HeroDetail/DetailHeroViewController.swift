@@ -49,29 +49,41 @@ class DetailHeroViewController: UIViewController {
             switch status {
             case .locationsUpdated:
                 self?.updateMapAnnotations() //se muestran las anotaciones en el mapa
-                self?.spinner.isHidden = true
-                self?.heroNameLabel.text = self?.viewModel.getHeroname()
-                self?.infoHerotext.text = self?.viewModel.getHeroInfo()
+                self?.statusLocationsUpdated()
                 //actualizamos el listado de heroes
             case .transformationsUpdated:
-                var snapshot = NSDiffableDataSourceSnapshot<SectionTransformation, Transformation>()
-                snapshot.appendSections([.main])
-                snapshot.appendItems(self?.viewModel.getheroTransformations() ?? [], toSection: .main)
-                self?.dataSource?.apply(snapshot)
+                self?.statusTransformationsUpdated()
             case .error(reason: let reason):
-                //informamos error
-                //Si creamos un alert en el viewController se muestra una alerta de error:
-                let alert = UIAlertController(title: "Detail View Error", message: reason, preferredStyle: .alert)
-                //añadimos al alert un botón "OK" para salir
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                //Se necesita el present para mostrar vistas modales
-                self?.present(alert, animated: true)
+                self?.statusError(reason: reason)
             case .loading:
                 self?.spinner.isHidden = false
             case .none:
                 break
             }
         }
+    }
+    
+    private func statusLocationsUpdated() {
+        spinner.isHidden = true
+        heroNameLabel.text = viewModel.getHeroname()
+        infoHerotext.text = viewModel.getHeroInfo()
+    }
+    
+    private func statusTransformationsUpdated() {
+        var snapshot = NSDiffableDataSourceSnapshot<SectionTransformation, Transformation>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(viewModel.getheroTransformations(), toSection: .main)
+        dataSource?.apply(snapshot)
+    }
+    
+    private func statusError(reason: String) {
+        //informamos error
+        //Si creamos un alert en el viewController se muestra una alerta de error:
+        let alert = UIAlertController(title: "Detail View Error", message: reason, preferredStyle: .alert)
+        //añadimos al alert un botón "OK" para salir
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        //Se necesita el present para mostrar vistas modales
+        alert.present(alert, animated: true)
     }
     
     private func configureCollectionView() {
