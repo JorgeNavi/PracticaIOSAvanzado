@@ -18,7 +18,7 @@ final class LoginUseCaseTest: XCTestCase {
         try super.setUpWithError()
         apiProvider = PIAApiProviderMock()
         secureDataStore = SecureDataStorageMock()
-        sut = LoginUseCase(apiProvider: apiProvider as! PIAApiProvider)
+        sut = LoginUseCase(apiProvider: apiProvider, secureStorage: secureDataStore)
     }
     
     override func tearDownWithError() throws {
@@ -44,6 +44,26 @@ final class LoginUseCaseTest: XCTestCase {
             }
         }
         
+        //Then
+        wait(for: [expectated], timeout: 1)
+    }
+    
+    func test_Login_Failure() {
+        //Given
+        let username = "NotAdmin"
+        let password = "NotAdmin"
+        let expectated = expectation(description: "Login Failure")
+        
+        //when
+        sut.login(username: username, password: password) { result in
+            switch result {
+            case .success:
+                XCTFail("Login Failure")
+            case .failure(let error):
+                XCTAssertEqual(error.description, "Invalid credentials")
+                expectated.fulfill()
+            }
+        }
         //Then
         wait(for: [expectated], timeout: 1)
     }
