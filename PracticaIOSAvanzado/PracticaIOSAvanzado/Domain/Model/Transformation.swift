@@ -2,7 +2,7 @@
 import Foundation
 
 
-struct Transformation {
+struct Transformation: Hashable {
     
     let id: String
     let name: String

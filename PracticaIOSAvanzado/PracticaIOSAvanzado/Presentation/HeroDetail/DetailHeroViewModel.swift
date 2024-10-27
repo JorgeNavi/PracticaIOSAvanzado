@@ -4,8 +4,9 @@ import MapKit
 
 enum statusDetailHero {
     
-    case locationUpdated
+    case dataUpdated
     case error(reason: String)
+    case loading
     case none
 }
 
@@ -31,6 +32,16 @@ class DetailHeroViewModel {
     
     func getHeroname() -> String? {
         return hero.name
+    }
+    
+    func getheroTransformations() -> [Transformation] {
+        return heroTransformations
+    }
+    
+    func getTransfromationAt(index: Int) -> Transformation? {
+        //el ternario "?" es un condicional if/else en una linea.
+        //si el indice es menor que el total de las transformaciones en el array, me devuelve la condicion a la izq de los dos puntos (:), si no, me devuelve la de la derecha (nil)
+        return index < heroTransformations.count ? heroTransformations[index] : nil
     }
     
     func loadData() {
@@ -74,6 +85,6 @@ class DetailHeroViewModel {
             let annotation = HeroAnnotation(title: self?.hero.name, coordinate: coordinate)
             self?.annotations.append(annotation)
         }
-        self.status.value = .locationUpdated
+        self.status.value = .dataUpdated
     }
 }

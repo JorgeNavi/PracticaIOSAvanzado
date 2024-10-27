@@ -22,6 +22,9 @@
 		FC5FB57B2CC115E800E5DC5B /* HeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */; };
 		FC5FB57F2CC116BD00E5DC5B /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB57D2CC116BB00E5DC5B /* Hero.swift */; };
 		FC5FB5872CC1257E00E5DC5B /* PIAObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */; };
+		FC624B152CCE5BF6002C9D8E /* DetailTransformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC624B142CCE5BF6002C9D8E /* DetailTransformationViewController.xib */; };
+		FC624B162CCE5BF6002C9D8E /* DetailTransformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC624B132CCE5BF6002C9D8E /* DetailTransformationViewController.swift */; };
+		FC624B182CCE5DDD002C9D8E /* DetailTransformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC624B172CCE5DD1002C9D8E /* DetailTransformationViewModel.swift */; };
 		FC65E0BD2CBEC6EA006D2F52 /* PIAApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */; };
 		FC67443A2CCAABA5005B7064 /* ApiProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6744392CCAABA5005B7064 /* ApiProviderTests.swift */; };
 		FC67443F2CCAAD26005B7064 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67443E2CCAAD1C005B7064 /* URLProtocolMock.swift */; };
@@ -91,6 +94,9 @@
 		FC5FB57A2CC115DF00E5DC5B /* HeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewModel.swift; sourceTree = "<group>"; };
 		FC5FB57D2CC116BB00E5DC5B /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		FC5FB5862CC1257200E5DC5B /* PIAObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAObservable.swift; sourceTree = "<group>"; };
+		FC624B132CCE5BF6002C9D8E /* DetailTransformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransformationViewController.swift; sourceTree = "<group>"; };
+		FC624B142CCE5BF6002C9D8E /* DetailTransformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransformationViewController.xib; sourceTree = "<group>"; };
+		FC624B172CCE5DD1002C9D8E /* DetailTransformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransformationViewModel.swift; sourceTree = "<group>"; };
 		FC65E0BB2CBEC6E3006D2F52 /* PIAApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIAApiProvider.swift; sourceTree = "<group>"; };
 		FC6744392CCAABA5005B7064 /* ApiProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProviderTests.swift; sourceTree = "<group>"; };
 		FC67443E2CCAAD1C005B7064 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 		FC5FB5542CC0F40300E5DC5B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FC624B122CCE5BCD002C9D8E /* TransformationDetail */,
 				FC5FB5572CC0F41A00E5DC5B /* Splash */,
 				FC5FB5562CC0F41300E5DC5B /* Login */,
 				FC5FB5712CC113F300E5DC5B /* Heroes */,
@@ -235,6 +242,16 @@
 				FCD8DC9A2CCA33F100FF71E2 /* Location.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FC624B122CCE5BCD002C9D8E /* TransformationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FC624B172CCE5DD1002C9D8E /* DetailTransformationViewModel.swift */,
+				FC624B132CCE5BF6002C9D8E /* DetailTransformationViewController.swift */,
+				FC624B142CCE5BF6002C9D8E /* DetailTransformationViewController.xib */,
+			);
+			path = TransformationDetail;
 			sourceTree = "<group>";
 		};
 		FC65E0BA2CBEC6D5006D2F52 /* Network */ = {
@@ -529,6 +546,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC624B152CCE5BF6002C9D8E /* DetailTransformationViewController.xib in Resources */,
 				FC727AC52CBE7250007FFA9D /* Assets.xcassets in Resources */,
 				FC4331312CC16364005F4458 /* HeroCell.xib in Resources */,
 				FC727AC72CBE7250007FFA9D /* LaunchScreen.storyboard in Resources */,
@@ -585,9 +603,11 @@
 				FC5FB56A2CC1131F00E5DC5B /* PIAApiError.swift in Sources */,
 				FC727AE02CBE76BA007FFA9D /* MOHero+CoreDataClass.swift in Sources */,
 				FC5FB57B2CC115E800E5DC5B /* HeroesViewModel.swift in Sources */,
+				FC624B182CCE5DDD002C9D8E /* DetailTransformationViewModel.swift in Sources */,
 				FC727AF12CBE811E007FFA9D /* StoreDataProvider.swift in Sources */,
 				FC5FB57F2CC116BD00E5DC5B /* Hero.swift in Sources */,
 				FC5FB56F2CC1139200E5DC5B /* PIARequestBuilder.swift in Sources */,
+				FC624B162CCE5BF6002C9D8E /* DetailTransformationViewController.swift in Sources */,
 				FC727AE22CBE76BA007FFA9D /* MOLocation+CoreDataClass.swift in Sources */,
 				FC4331322CC16364005F4458 /* HeroCell.swift in Sources */,
 				FC727AE92CBE79BB007FFA9D /* ApiHero.swift in Sources */,

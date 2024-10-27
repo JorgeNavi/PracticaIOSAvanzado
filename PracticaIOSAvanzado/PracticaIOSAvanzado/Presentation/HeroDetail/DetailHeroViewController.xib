@@ -14,6 +14,7 @@
                 <outlet property="heroNameLabel" destination="5C4-IA-w0i" id="NZm-c8-K7i"/>
                 <outlet property="infoHerotext" destination="6OX-lc-QGV" id="D9O-BL-LbI"/>
                 <outlet property="mapView" destination="xIv-dJ-dj7" id="q8X-ER-l3N"/>
+                <outlet property="spinner" destination="Be4-lZ-bfj" id="6fO-Zj-o43"/>
                 <outlet property="transformationsContainer" destination="lII-nr-gVJ" id="yVS-fX-TMk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,7 +27,7 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIv-dJ-dj7">
                     <rect key="frame" x="0.0" y="132" width="402" height="168"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="xIv-dJ-dj7" secondAttribute="height" multiplier="67:28" id="fbW-zv-e08"/>
+                        <constraint firstAttribute="height" constant="168" id="wDj-th-5I1"/>
                     </constraints>
                     <standardMapConfiguration key="preferredConfiguration"/>
                 </mapView>
@@ -43,11 +44,14 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Be4-lZ-bfj" userLabel="Spinner">
+                    <rect key="frame" x="191" y="427" width="20" height="20"/>
+                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9L-h0-8LI">
-                    <rect key="frame" x="0.0" y="712" width="402" height="128"/>
+                    <rect key="frame" x="0.0" y="566" width="402" height="274"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lII-nr-gVJ" userLabel="TransformationsContainer">
-                            <rect key="frame" x="0.0" y="0.0" width="402" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="402" height="274"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V4I-1g-Y4s">
                                 <size key="itemSize" width="128" height="128"/>
@@ -70,20 +74,21 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="xIv-dJ-dj7" firstAttribute="trailing" secondItem="6OX-lc-QGV" secondAttribute="trailing" id="8bT-6L-Rga"/>
                 <constraint firstItem="xIv-dJ-dj7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8xh-W9-ZQh"/>
                 <constraint firstItem="q9L-h0-8LI" firstAttribute="top" secondItem="6OX-lc-QGV" secondAttribute="bottom" id="BW8-iU-O69"/>
                 <constraint firstItem="6OX-lc-QGV" firstAttribute="leading" secondItem="q9L-h0-8LI" secondAttribute="leading" id="FpY-8k-hrk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="q9L-h0-8LI" secondAttribute="trailing" id="ML5-ai-UBp"/>
                 <constraint firstItem="6OX-lc-QGV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="PSf-qc-XZ4"/>
                 <constraint firstItem="5C4-IA-w0i" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="26" id="SUP-Dy-NPB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xIv-dJ-dj7" secondAttribute="trailing" id="cHe-tc-pnX"/>
+                <constraint firstItem="Be4-lZ-bfj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="eWj-Ox-RN0"/>
                 <constraint firstItem="q9L-h0-8LI" firstAttribute="centerX" secondItem="5C4-IA-w0i" secondAttribute="centerX" id="eyK-Nz-7qX"/>
                 <constraint firstItem="q9L-h0-8LI" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="nhQ-ar-U4I"/>
                 <constraint firstItem="xIv-dJ-dj7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="pLh-gB-nmo"/>
-                <constraint firstItem="q9L-h0-8LI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="712" id="qTg-xb-4T4"/>
                 <constraint firstItem="6OX-lc-QGV" firstAttribute="trailing" secondItem="q9L-h0-8LI" secondAttribute="trailing" id="rcv-iZ-JO9"/>
                 <constraint firstItem="q9L-h0-8LI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sMx-hS-gBS"/>
                 <constraint firstItem="6OX-lc-QGV" firstAttribute="top" secondItem="xIv-dJ-dj7" secondAttribute="bottom" constant="8" id="tI7-Ri-D21"/>
+                <constraint firstItem="Be4-lZ-bfj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yrH-eB-gZO"/>
             </constraints>
             <point key="canvasLocation" x="131.34328358208955" y="-11.670480549199084"/>
         </view>
